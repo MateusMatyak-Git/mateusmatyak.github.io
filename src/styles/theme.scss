@@ -1,0 +1,95 @@
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Text */
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+
+  /* Accent (indigo) */
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-soft: #eef2ff;
+  --color-accent-text: #ffffff;
+
+  /* Feedback */
+  --color-success: #059669;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Type */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Layout */
+  --container-width: 1120px;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0a0f1c;
+  --color-surface: #111827;
+  --color-surface-raised: #151f32;
+  --color-border: #253247;
+  --color-border-strong: #334155;
+
+  --color-text: #e6ebf3;
+  --color-text-secondary: #a3b0c4;
+  --color-text-muted: #6b7a94;
+
+  --color-accent: #818cf8;
+  --color-accent-hover: #a5b4fc;
+  --color-accent-soft: #1c2140;
+  --color-accent-text: #0a0f1c;
+
+  --color-success: #34d399;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
+    color-scheme: dark;
+
+    --color-bg: #0a0f1c;
+    --color-surface: #111827;
+    --color-surface-raised: #151f32;
+    --color-border: #253247;
+    --color-border-strong: #334155;
+
+    --color-text: #e6ebf3;
+    --color-text-secondary: #a3b0c4;
+    --color-text-muted: #6b7a94;
+
+    --color-accent: #818cf8;
+    --color-accent-hover: #a5b4fc;
+    --color-accent-soft: #1c2140;
+    --color-accent-text: #0a0f1c;
+
+    --color-success: #34d399;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
+  }
+}

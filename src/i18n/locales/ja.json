@@ -1,0 +1,1204 @@
+{
+  "nav": {
+    "about": "概要",
+    "skills": "スキル",
+    "architecture": "アーキテクチャ",
+    "projects": "プロジェクト",
+    "experience": "経歴",
+    "contact": "お問い合わせ",
+    "menu": "メニューを開く",
+    "primary": "メイン"
+  },
+  "hero": {
+    "greeting": "こんにちは、",
+    "name": "Mateus Matyak",
+    "role": "フルスタックエンジニア",
+    "tagline": "Vue.jsのフロントエンドからSpring Bootのバックエンドまで、セキュアでイベント駆動型のマイクロサービスエコシステムを設計・構築しています。",
+    "availability": "新しい機会を募集しています",
+    "about_cta": "自己紹介。クリックして読む",
+    "about_title": "自己紹介",
+    "cta_projects": "プロジェクトを見る",
+    "cta_contact": "お問い合わせ"
+  },
+  "about": {
+    "body": "分散システムに注力するフルスタックエンジニアです。日々、Vue.jsのフロントエンドがSpring BootのBFFと通信し、BFFがKeycloakで認証し、RabbitMQ経由でバックエンドサービスを非同期に調整するマイクロサービスアーキテクチャを設計しています。\n\nすべての認証情報はVaultで一元管理しています。ハードコードなし、コードへの露出なし。デフォルトで安全で、本番環境で観測可能であり、ドラマなく水平スケールできるシステムを大切にしています。\n\nVue 3のコンポーネントツリーであれ、サービス間のメッセージ契約であれ、システムを良い意味で退屈に保つ細部にこだわります。予測可能で、耐障害性が高く、理解しやすい状態です。"
+  },
+  "skills": {
+    "title": "スキル",
+    "subtitle": "2つのフローと同じスタックです。Vue 3からBFFへ、RabbitMQ上のworker、サービスごとのPostgreSQL。反対側ではGit Flow、Jenkins、OKEです。",
+    "tech_guide_cta": "各要素の実際の役割を見る",
+    "carousel_prev": "前のカテゴリ",
+    "carousel_next": "次のカテゴリ",
+    "categories": {
+      "frontend": {
+        "title": "Frontend",
+        "subtitle": "Vue 3のSPAです。トークンはPinia、PKCEはKeycloakに対して行います。すべてのHTTPインテントはgatewayを通り、workerにWeb表面はありません。"
+      },
+      "backend": {
+        "title": "Backend & Messaging",
+        "subtitle": "HTTPはBFFにあり、workerにはありません。OpenAPIはBFF、RPCはRabbitMQ。契約はキューと同じデリバリーに含まれます。"
+      },
+      "data": {
+        "title": "Data",
+        "subtitle": "各workerが自身のPostgreSQLスキーマを所有します。サービスをまたぐFKはなく、別コンテキストの読み取りはRPCを通ります。"
+      },
+      "security": {
+        "title": "Security & Identity",
+        "subtitle": "KeycloakがJWTを発行し、BFFが認可し、Vaultがランタイムで注入します。Redisはgatewayでpeer IPによりレート制限します。"
+      },
+      "observability": {
+        "title": "Observability",
+        "subtitle": "GrafanaがPrometheusとLokiをオーケストレーションします。メトリクスとログは同一ダッシュボードにあり、correlation-idで相関します。"
+      },
+      "testing": {
+        "title": "Testing & Quality",
+        "subtitle": "ドメインロジックはJUnit、フロントはnode:test、workerプロファイルはArchUnitです。Sonarがゲートであり、新たな違反は通りません。"
+      },
+      "devops": {
+        "title": "DevOps & CI/CD",
+        "subtitle": "アプリのmasterがないGit Flowです。Jenkinsはプレフィックスを読み、Dockerは同一アーティファクト、OKEがステージングと本番を隔離します。"
+      }
+    }
+  },
+  "techGuide": {
+    "back_cta": "スキルに戻る",
+    "title": "各要素の実際の役割",
+    "intro": "以下のツールは、構築中にシステムへ果たす役割と、実際に使われたときにそれが何になるかという2つの理由で場所を得ています。そのつながりを、ここに明示します。",
+    "dev_label": "開発時",
+    "impact_label": "利用者にとって",
+    "items": {
+      "vue": {
+        "dev": "SPAです。PKCEで認証し、トークンをPiniaに保持し、workerを直接呼び出すことはありません。",
+        "impact": "ページは即座で滑らかに感じられます。操作はすぐに応答し、画面全体の再読み込みはありません。"
+      },
+      "typescript": {
+        "dev": "コードベース全体で、出荷前に型エラーを検出します。",
+        "impact": "本番に届く不具合が減り、日々より安定して予測しやすいアプリケーションになります。"
+      },
+      "vite": {
+        "dev": "開発中のほぼ即時のホットリロードで、アプリケーションをビルドしバンドルします。",
+        "impact": "最適化された最小バンドルをブラウザへ送るため、読み込みが速くなります。"
+      },
+      "primevue": {
+        "dev": "SPAのデザインシステムです。画面ごとにボタンやフォームを作り直さず、用意されたUIパターンを使います。",
+        "impact": "一貫して洗練された操作です。ボタン、フォーム、メニューは期待どおりに動きます。"
+      },
+      "vuerouter": {
+        "dev": "SPAのナビゲーションです。各ページはルートが要求したときだけコードをダウンロードします。",
+        "impact": "ブラウザは現在のビューに必要なものだけをダウンロードするため、ページの読み込みが速くなります。"
+      },
+      "pinia": {
+        "dev": "トークンはここにあります。フロントのセッションはworkerへ漏れません。",
+        "impact": "操作はアプリケーション全体で同期したままです。古くなった画面や矛盾した画面はありません。"
+      },
+      "junit": {
+        "dev": "実オブジェクトに対する純粋なロジックです。ビジネスのモックも、自明なgetterも、Springそのもののテストもありません。",
+        "impact": "利用者が起動するルールは、フレームワークではなく、重要なスライスですでに検証されています。"
+      },
+      "nodetest": {
+        "dev": "フロントはNodeそのものでテストします。ランタイムは1つ、テストは1つです。カバレッジはここから出ます。並列ランナーではありません。",
+        "impact": "画面が計算するものは、パイプラインが測る契約と同じです。途上での驚きはありません。"
+      },
+      "archunit": {
+        "dev": "workerプロファイルはテストです。ルールを変えることは、同じデリバリーですべてのworkerを変えることを意味します。",
+        "impact": "サービスが偶然HTTPやJDBCを増やすことはありません。責任の切り分けは保たれます。"
+      },
+      "eslint": {
+        "dev": "ゲートが課す基準は、すでにエディタで失敗します。パイプラインを待って知る必要はありません。",
+        "impact": "コードは同じ基準のままゲートに届くため、微妙な不具合が通りにくくなります。"
+      },
+      "sonar": {
+        "dev": "developとfeature/*のデフォルトゲートです。新たな違反はゼロ、新規カバレッジは≥80。バイパスはありません。",
+        "impact": "出荷するものはすでに固定の基準を満たしています。デプロイ当日に緩める人はいません。"
+      },
+      "springboot": {
+        "dev": "HTTPはBFFにあり、workerにはありません。デリバリーにはテストが含まれます。コンパイルだけでは足りません。",
+        "impact": "実トラフィックが急増しても、リクエストは信頼できるように処理されます。"
+      },
+      "rabbitmq": {
+        "dev": "新しいrouting keyは契約と一緒に出荷されます。Springwolfとテストは、キューと同じデリバリーに入ります。",
+        "impact": "サービスが一時的に遅くても、操作は完了します。黙って失敗することはありません。"
+      },
+      "openapi": {
+        "dev": "BFF上のHTTP契約であり、コードと一緒にバージョン管理されます。並行するwikiはありません。",
+        "impact": "画面が呼び出すものは、サービスが公開する契約と同じです。"
+      },
+      "postgresql": {
+        "dev": "各workerは自身のテーブルにだけ書き込みます。サービスをまたぐ物理FKはありません。",
+        "impact": "注文、プロフィール、履歴は正確なまま残り、途中書き込みのまま放置されません。"
+      },
+      "keycloak": {
+        "dev": "サービスごとに認証をゼロから作る代わりに、ログイン、トークン、権限を一元化します。",
+        "impact": "アカウントは1つ、ログインは1回です。余分な摩擦なく、アクセスは安全なままです。"
+      },
+      "openid": {
+        "dev": "フロントエンド、BFF、サービスが同じIDトークンを信頼する仕方を標準化します。",
+        "impact": "セッションは1ページだけでなく、アプリケーション全体で有効かつ安全なままです。"
+      },
+      "vault": {
+        "dev": "すべての認証情報をランタイムで注入します。同じapplication.ymlをすべての環境で使います。",
+        "impact": "データは、漏洩したリポジトリに一度も露出していないインフラで保護されます。"
+      },
+      "redis": {
+        "dev": "gatewayでのレート制限です。キーはpeer IPであり、クライアントが捏造するヘッダーではありません。",
+        "impact": "不正利用はエッジで止まり、BFF上の正当なリクエストを罰しません。"
+      },
+      "grafana": {
+        "dev": "メトリクスとログは同一ダッシュボードにあり、correlation-idで相関します。",
+        "impact": "問題はチケットになる前にアラートとして現れます。"
+      },
+      "prometheus": {
+        "dev": "BFFではscrape、workerではpushです。workerにHTTPのhealth表面はありません。",
+        "impact": "レイテンシとエラーは、余分な表面を開かずにGrafanaへ届きます。"
+      },
+      "loki": {
+        "dev": "correlation-id付きのJSONログです。パスワード、JWT、税務IDはログに入れません。",
+        "impact": "漏らしてはならないものを漏らさずに、リクエストを追えます。"
+      },
+      "docker": {
+        "dev": "ジョブはMODEを渡します。同じDockerfile、同じアーティファクトです。変わるのは宛先であり、レシピではありません。",
+        "impact": "テストしたものが、そのまま届きます。環境固有の驚きはありません。"
+      },
+      "jenkins": {
+        "dev": "ブランチプレフィックスが契約です。developはステージングへ、feature/*は検証のみ、release/*は本番前に確認を待ちます。",
+        "impact": "ステージングと本番は混ざりません。目にするものは、すでに実環境を通っています。"
+      },
+      "git": {
+        "dev": "featureとhotfixはdevelopから切り出します。リリースはカットです。新規コミットなし、アプリのmasterなし。1つのPR、1つのデリバリーです。",
+        "impact": "届く変更はすべて、永遠のブランチからではなく、レビュー可能なスライスから来ています。"
+      },
+      "kubernetes": {
+        "dev": "OKEです。ステージングと本番はそれぞれ独自のcompartmentです。同じ経路、異なるクォータです。",
+        "impact": "テストで検証したものは、同じ形で、隔離され、より多くのCPUで出荷されます。"
+      }
+    }
+  },
+  "architecture": {
+    "intro": {
+      "title": "アーキテクチャ",
+      "subtitle": "働き方を2つの視点で見ます。日常のフローと、システムのために設計するアーキテクチャです。"
+    },
+    "title": "アプリケーションの設計の仕方",
+    "subtitle": "フロントエンドはgatewayと話し、BFFが認証してRabbitMQへRPCを発行し、workerがPostgreSQLへ永続化します。BFFにJDBCはなく、workerにHTTPはありません。",
+    "diagram": {
+      "caption": "利用者はKeycloak（PKCE）で認証します。gatewayはルーティング、レート制限、correlation-idの注入を行い、BFFはJWTを検証し、ロールで認可し、RabbitMQへRPCを発行します。workerはHTTP表面なしで待ち受け、ビジネスルールを実行し、所有するスキーマへ永続化します。Vaultはランタイムでシークレットを注入します。GrafanaはPrometheusとLokiをオーケストレーションします。メトリクスのscrapeとpush、JSONログ、ダッシュボードとアラートを一箇所にまとめます。",
+      "groups": {
+        "http": "HTTP",
+        "persistence": "永続化"
+      },
+      "nodes": {
+        "client": {
+          "title": "Frontend",
+          "subtitle": "Vue 3 · PKCE"
+        },
+        "gateway": {
+          "title": "API Gateway",
+          "subtitle": "TLS · rate-limit"
+        },
+        "bff": {
+          "title": "BFF",
+          "subtitle": "HTTPメッセンジャー"
+        },
+        "oauth": {
+          "title": "OAuth2 JWT",
+          "subtitle": "Resource server"
+        },
+        "openapi": {
+          "title": "OpenAPI",
+          "subtitle": "SpringDoc"
+        },
+        "rbac": {
+          "title": "RBAC",
+          "subtitle": "Keycloak roles"
+        },
+        "validation": {
+          "title": "Validation",
+          "subtitle": "Bean Validation"
+        },
+        "queue": {
+          "title": "RabbitMQ",
+          "subtitle": "RPC · DLQ"
+        },
+        "services": {
+          "title": "Workers",
+          "subtitle": "HTTPなし"
+        },
+        "amqp": {
+          "title": "AMQP listener",
+          "subtitle": "rpcCall"
+        },
+        "springwolf": {
+          "title": "Springwolf",
+          "subtitle": "AMQP契約"
+        },
+        "jpa": {
+          "title": "JPA",
+          "subtitle": "所有スキーマ"
+        },
+        "cache": {
+          "title": "Caffeine",
+          "subtitle": "ローカルキャッシュ"
+        },
+        "auth": {
+          "title": "Keycloak",
+          "subtitle": "Login · JWT"
+        },
+        "vault": {
+          "title": "Vault",
+          "subtitle": "Secrets"
+        },
+        "redis": {
+          "title": "Redis",
+          "subtitle": "Rate-limit"
+        },
+        "db": {
+          "title": "PostgreSQL",
+          "subtitle": "データベース"
+        },
+        "prometheus": {
+          "title": "Prometheus",
+          "subtitle": "メトリクス"
+        },
+        "loki": {
+          "title": "Loki",
+          "subtitle": "JSONログ"
+        },
+        "grafana": {
+          "title": "Grafana",
+          "subtitle": "ダッシュボード"
+        },
+        "dbeaver": {
+          "title": "DBeaver",
+          "subtitle": "SQLクライアント"
+        }
+      },
+      "edges": {
+        "login": "PKCE",
+        "request": "HTTPS",
+        "strip": "/v1",
+        "publish": "RPC",
+        "consume": "消費",
+        "persist": "永続化",
+        "validate": "JWTを検証",
+        "secrets": "シークレット",
+        "ratelimit": "rate-limit",
+        "scrape": "/metrics",
+        "logs": "ログ",
+        "manage": "管理"
+      }
+    },
+    "learn_more": "詳しく見る：",
+    "details": {
+      "client": "Vue 3のSPAです。Keycloakに対してPKCEで認証し、トークンをPiniaに保持し、workerを直接呼び出すことはありません。すべてのHTTPインテントはgatewayを通り、BFFに届きます。",
+      "gateway": "ルーティング、TLS、レート制限、correlation-idです。ビジネスルールもペイロード変換もありません。クライアントの/api/...をBFFの/v1/...へ転送します。",
+      "bff": "ドメインにおける唯一のHTTP表面です。JWTを検証し、ロールで認可し、UI向けにレスポンスを整形し、RabbitMQへ作業を発行します。JDBCはなく、workerへのHTTP呼び出しもありません。",
+      "oauth": "BFFはOAuth2 resource serverです。毎回の呼び出しでKeycloakのJWKに対してJWTを確認します。gatewayはアイデンティティを所有しません。",
+      "openapi": "BFF上のSpringDocです。HTTP契約は並行するwikiではなく、コードと一緒に生き、バージョン管理されます。",
+      "rbac": "すべてのドメインAPIは、フロントクライアントのKeycloakロールで認可します。フロントエンドはUX上必要なものだけを隠し、ルールはBFFで強制されます。",
+      "validation": "BFF上のBean Validationです。フィールドエラーは型付きの400になり、技術的な失敗がスタック、SQL、キュー名をHTTPボディへ漏らすことはありません。",
+      "queue": "RabbitMQ上の同期RPCです。ドメインの成功とエラーはエンベロープで戻り、タイムアウトとDLQは技術的な失敗になります。exchangeとrouting keyはサービスごとです。",
+      "services": "HTTPのないSpring Boot workerです。それぞれが自身のキューを待ち受け、ビジネスルールを実行し、独自のデプロイ周期で永続化します。starter-webはありません。",
+      "amqp": "AMQP listenerがworkerの入口です。BFFはrpcCall経由でのみ発行し、workerが生のJPAエンティティをエンベロープで返すことはありません。",
+      "springwolf": "AMQP契約はworker自身に文書化されます。新しいキューはすべて、同じデリバリーで契約と一緒に出荷されます。",
+      "jpa": "各workerが自身のPostgreSQLスキーマを所有します。サービスをまたぐ物理FKはなく、別のbounded contextのデータを読むときはRPCを通ります。",
+      "cache": "worker内のCaffeineは、ローカルで短命なデータ向けです。データベースの代わりにはならず、別サービスのデータを漏らしません。",
+      "db": "記録のシステムです。各サービスはJPA/Hibernate経由で自身のテーブルにだけ書き込み、開発以外ではddl-autoをvalidateにします。",
+      "auth": "アイデンティティプロバイダーです。ログイン画面、短命なOIDCトークン、そしてBFFが認可に変換するロールの源泉です。",
+      "vault": "認証情報が存在する唯一の場所です。同じapplication.ymlをすべての環境で使い、VaultがランタイムでRMQ、データベース、JWTなどを注入します。",
+      "redis": "レート制限とgatewayの支援です。キーはpeer IPであり、クライアントが捏造できるヘッダーではありません。",
+      "prometheus": "BFFではActuatorのscrapeです。workerではメトリクスをpushし、HTTPのhealth表面はありません。レイテンシとエラーは、利用者が気づく前にGrafanaへ届きます。",
+      "loki": "correlation-id、userId、level付きのJSONログです。GrafanaはLokiを照会します。パスワード、JWT、税務ID、プロバイダーのペイロードはログに入れません。",
+      "grafana": "可観測性の層です。GrafanaはPrometheusとLokiをオーケストレーションします。メトリクスとログは同一ダッシュボードにあり、correlation-idで相関し、両者が収集したものからアラートが出ます。",
+      "dbeaver": "スキーマの確認、アドホックなクエリ、アプリケーション外でのデータデバッグに使うSQLクライアントです。"
+    },
+    "footnote": "BFF、worker、フロントエンドはDockerでコンテナ化して出荷します。同じアーティファクトをステージングと本番で使い、変わるのは宛先とVaultからのシークレットです。",
+    "workflow": {
+      "title": "開発の進め方",
+      "subtitle": "運用を壊せないシステム向けの、品質ゲート付きデリバリーです。developからブランチを切り、ステージング、QA、そして本番へのリリースです。",
+      "caption": "すべての変更はdevelopから切り出したfeature/*またはhotfix/*ブランチで始まり、コードレビュー後にだけ取り込まれます。オンプレミスのJenkinsでは、スキャンがマルチブランチパイプラインを開始します。契約はブランチプレフィックスです。developはステージングへ、release/<version>は本番へ行きます。ステージングパイプラインはcheckout、ツールインストール、テスト（UTとSAST）、Sonar Quality Gate、ステージングビルド、プレ本番デプロイを実行します。デプロイはインスタンスを作り直し、予約IPを再接続するため、DNSとロードバランサーは同じアドレスを保ちます。ステージングと本番は同じOCI経路（DNS、ロードバランサー、Ingress、OKE、Docker、JVM）を繰り返し、それぞれ独自のcompartmentで、別々のDNSとロードバランサーを持ちます。developがステージングにある状態で、QAはまず運用影響が最も大きい基本フローを、hotfixかfeatureかを問わずカバーし、その後に変更そのものを検証します。hotfixが実際にバグを直したこと、またはfeatureが実装され期待どおりに動くことです。",
+      "groups": {
+        "homologation": "ステージング",
+        "qaChange": "変更の検証",
+        "production": "本番"
+      },
+      "nodes": {
+        "develop": {
+          "title": "Develop",
+          "subtitle": "完全なアプリケーション"
+        },
+        "feature": {
+          "title": "feature/*",
+          "subtitle": "新機能"
+        },
+        "hotfix": {
+          "title": "hotfix/*",
+          "subtitle": "バグ修正"
+        },
+        "developMerge": {
+          "title": "Develop",
+          "subtitle": "レビュー済みマージ"
+        },
+        "review": {
+          "title": "Code Review",
+          "subtitle": "Pull Request"
+        },
+        "jenkins": {
+          "title": "Jenkins",
+          "subtitle": "Scan · ステージング"
+        },
+        "checkout": {
+          "title": "Checkout",
+          "subtitle": "ブランチのコード"
+        },
+        "tools": {
+          "title": "Tool install",
+          "subtitle": "ツール"
+        },
+        "test": {
+          "title": "Test · UT · SAST",
+          "subtitle": "ステージ 1"
+        },
+        "sonar": {
+          "title": "Sonar QG",
+          "subtitle": "ステージ 2"
+        },
+        "buildStaging": {
+          "title": "Build staging",
+          "subtitle": "ステージ 3"
+        },
+        "deployPre": {
+          "title": "プレ本番デプロイ",
+          "subtitle": "予約IP"
+        },
+        "staging": {
+          "title": "ステージング",
+          "subtitle": "OCI compartment"
+        },
+        "dnsHomolog": {
+          "title": "DNS · test",
+          "subtitle": "OCI DNS"
+        },
+        "lbHomolog": {
+          "title": "Load balancer",
+          "subtitle": "HTTPS · SSL"
+        },
+        "ingressHomolog": {
+          "title": "Ingress",
+          "subtitle": "ルート → サービス"
+        },
+        "okeHomolog": {
+          "title": "OKE · 256MB",
+          "subtitle": "0.5 CPU"
+        },
+        "dockerHomolog": {
+          "title": "Docker",
+          "subtitle": "同一アーティファクト"
+        },
+        "jvmHomolog": {
+          "title": "JVM",
+          "subtitle": "Spring Boot"
+        },
+        "qa": {
+          "title": "QA",
+          "subtitle": "検証"
+        },
+        "qaBasic": {
+          "title": "基本テスト",
+          "subtitle": "運用影響が最大"
+        },
+        "qaFeature": {
+          "title": "Feature検証済み",
+          "subtitle": "期待どおりに動作"
+        },
+        "qaHotfix": {
+          "title": "Hotfix検証済み",
+          "subtitle": "バグ解消"
+        },
+        "release": {
+          "title": "release/<version>",
+          "subtitle": "本番向け"
+        },
+        "jenkinsProd": {
+          "title": "Jenkins",
+          "subtitle": "Scan · 本番"
+        },
+        "checkoutProd": {
+          "title": "Checkout",
+          "subtitle": "ブランチのコード"
+        },
+        "toolsProd": {
+          "title": "Tool install",
+          "subtitle": "ツール"
+        },
+        "testProd": {
+          "title": "Test · UT · SAST",
+          "subtitle": "ステージ 1"
+        },
+        "sonarProd": {
+          "title": "Input · tag",
+          "subtitle": "確認"
+        },
+        "buildProd": {
+          "title": "Build production",
+          "subtitle": "ステージ 3"
+        },
+        "deployProd": {
+          "title": "本番デプロイ",
+          "subtitle": "予約IP"
+        },
+        "production": {
+          "title": "本番",
+          "subtitle": "OCI compartment"
+        },
+        "dnsProd": {
+          "title": "DNS · prod",
+          "subtitle": "OCI DNS"
+        },
+        "lbProd": {
+          "title": "Load balancer",
+          "subtitle": "HTTPS · SSL"
+        },
+        "ingressProd": {
+          "title": "Ingress",
+          "subtitle": "ルート → サービス"
+        },
+        "okeProd": {
+          "title": "OKE · autoscale",
+          "subtitle": "CPU · メモリ"
+        },
+        "dockerProd": {
+          "title": "Docker",
+          "subtitle": "同一アーティファクト"
+        },
+        "jvmProd": {
+          "title": "JVM",
+          "subtitle": "Spring Boot"
+        }
+      },
+      "edges": {
+        "create": "ブランチを作成",
+        "merge": "マージ",
+        "approve": "レビュー",
+        "scan": "スキャン",
+        "ready": "環境準備完了",
+        "validate": "検証",
+        "release": "リリースを作成",
+        "deploy": "デプロイ"
+      },
+      "details": {
+        "develop": "完全なアプリケーションを保持するブランチです。すべての変更はここから始まります。",
+        "feature": "developから切り出した新機能ブランチです。feature/プレフィックスが変更の種類を明示します。",
+        "hotfix": "developから切り出したバグ修正ブランチです。hotfix/プレフィックスが、機能ではなく修正であることを明確にします。",
+        "developMerge": "developへのマージはコードレビュー後にだけ行われます。その更新されたdevelopがステージングへ行きます。",
+        "review": "すべての変更はdevelopに入る前にコードレビューを通ります。パイプラインの前の人によるゲートです。",
+        "jenkins": "オンプレミスのJenkinsでは、スキャンがマルチブランチパイプラインを開始します。契約はプレフィックスです。developはステージングへ行き、feature/*、hotfix/*、bugfix/*はゲートに達してそこで止まります。",
+        "checkout": "パイプラインの最初のステージです。ビルド対象ブランチのコードをチェックアウトします。",
+        "tools": "パイプラインの残りが動くために必要なツールと依存関係をインストールします。",
+        "test": "ステージングの最初のサブステージです。ドメインロジックはJUnit、フロントはnode:test、その後SASTです。テストなしのコンパイルはデリバリーではありません。",
+        "sonar": "2番目のサブステージです。デフォルトゲートは新たな違反ゼロ、新規カバレッジ≥80です。失敗すればパイプラインは止まります。バイパスはありません。",
+        "buildStaging": "3番目のサブステージです。プレ本番向けのステージングアーティファクトを生成します。",
+        "deployPre": "4番目のサブステージです。ステージングcompartmentでインスタンスを作り直し、予約IPを接続します。DNSとロードバランサーは同じアドレスを保ち、変わるのはコンテナだけです。",
+        "staging": "本番から隔離されたOCIステージングcompartmentです。リクエストはテストDNS、ロードバランサー、Ingress、OKE、コンテナ、JVMと進みます。本番と同じ順序で、CPUとメモリは少なめです。QAが製品を検証する環境です。",
+        "dnsHomolog": "テストURLを、このcompartmentのロードバランサーの公開IPへ解決します。本番LBを指すことはありません。",
+        "lbHomolog": "443でHTTPSを受け、SSLを終端し、ステージングcompartmentのプライベートネットワークへ転送します。公開IPは、デプロイが再接続する予約アドレスです。",
+        "ingressHomolog": "URLパスを読み、マイクロサービスを選びます。APIルートはステージングクラスタ内の正しいBFFに届きます。",
+        "okeHomolog": "OKEがこのcompartmentのノードとポッドをオーケストレーションします。ステージングコンテナは0.5 CPUと256MBに上限があり、本番ハードウェアを消費しません。",
+        "dockerHomolog": "パイプラインと同じDockerアーティファクトです。本番と同一のLinux環境で、CPUとメモリのクォータは小さめです。",
+        "jvmHomolog": "コンテナ内のJVMがSpring Bootを実行し、ビジネスルールを適用し、同じ経路でレスポンスを返します。",
+        "qa": "QAはプレ本番デプロイの後にステージングへ入ります。まず壊れてはならないものをカバーし、その後に変更そのものを検証します。",
+        "qaBasic": "運用影響が最も大きい基本フローのテストです。hotfixかfeatureかを問わず、常に実行します。",
+        "qaFeature": "変更がfeature/*ブランチから来た場合、QAは機能が実装され期待どおりに動くことを確認します。",
+        "qaHotfix": "変更がhotfix/*ブランチから来た場合、QAはバグが実際に直っており再発していないことを確認します。",
+        "release": "QAの承認後に作るrelease/<version>ブランチです。Jenkinsはそのプレフィックスを本番向けビルドとして扱います。",
+        "jenkinsProd": "同じスキャンを、今度はrelease/<version>に対して行います。ゲートの再実行はありません。プレフィックスが本番を許可し、確認とタグが付きます。",
+        "checkoutProd": "本番パイプラインの最初のステージです。release/<version>ブランチのコードをチェックアウトします。",
+        "toolsProd": "本番パイプラインの残りが動くために必要なツールと依存関係をインストールします。",
+        "testProd": "本番の最初のサブステージです。2ステップです。UT（ユニットテスト）とSAST（静的アプリケーションセキュリティテスト）です。",
+        "sonarProd": "release/*ではゲートは再実行しません。カットはすでにdevelopで通っています。本番はJenkinsの確認とsemverタグを待ちます。",
+        "buildProd": "3番目のサブステージです。本番アーティファクトを生成します。",
+        "deployProd": "4番目のサブステージです。本番compartmentでインスタンスを作り直し、予約IPを接続します。DNSとロードバランサーは同じアドレスを保ち、変わるのはコンテナだけです。",
+        "production": "ステージングから隔離されたOCI本番compartmentです。同じリクエスト経路（DNS、ロードバランサー、Ingress、OKE、Docker、JVM）で、独自のDNSとLB、より多いCPU/メモリ、オートスケールを持ちます。",
+        "dnsProd": "正規ドメインは本番ロードバランサーを指します。別のIP、別のcompartmentです。テストがここへ解決することはありません。",
+        "lbProd": "本番compartment専用のLBです。443でHTTPS、エッジでSSL、内部トラフィックはプライベートネットワークです。公開IPは、デプロイが再接続する予約アドレスです。",
+        "ingressProd": "ステージングIngressと同じ仕事です。URLパスがマイクロサービスを選びます。クラスタもcompartmentも別です。",
+        "okeProd": "本番OKEです。ポッドを起動し置き換え、CPUとメモリは多め、需要に応じて自動スケールします。",
+        "dockerProd": "同じアーティファクトです。Linuxプロセスを隔離し、このcompartmentでOKEが設定した上限を適用します。",
+        "jvmProd": "JVMがビジネスルールを実行し、JSONを返します。戻り経路はIngress → ロードバランサー → 利用者です。"
+      }
+    }
+  },
+  "projects": {
+    "title": "プロジェクト",
+    "subtitle": "これまでに作ったものの抜粋です",
+    "empty": "注目プロジェクトは近日公開です。",
+    "view_repo": "リポジトリを見る",
+    "live_site": "ブローカーのウェブサイト",
+    "private": "非公開ソース",
+    "private_hint": "リポジトリは非公開です。コードはブローカーに帰属します。",
+    "how_title": "システムの仕組み",
+    "sim_label": "ウォークスルー",
+    "sim": {
+      "title": "見積システム",
+      "subtitle": "フローをクリックして進めます。サンプルデータのみです。",
+      "aria": "Caçador Segurosの見積ウォークスルー",
+      "step_type": "種別",
+      "step_import": "PDF",
+      "step_review": "確認",
+      "step_done": "書類",
+      "select_label": "どの保険を見積もりますか？",
+      "types": {
+        "auto": "自動車",
+        "home": "住宅",
+        "business": "企業"
+      },
+      "import_title": "保険会社のPDFを取り込む",
+      "import_hint": "実際の見積の読み取りをシミュレートします。ファイルはコンピュータから出ません。",
+      "import_cta": "PDFを取り込む",
+      "processing": "PDFを処理しています…",
+      "log_detect": "保険会社を検出しています…",
+      "log_found": "{insurer}を識別しました",
+      "log_person": "被保険者データを抽出しています…",
+      "log_asset": "対象と補償を抽出しています…",
+      "log_done": "フォームを入力しました",
+      "review_title": "見積を確認",
+      "review_hint": "抽出項目を編集し、補償と免責を選びます。保険料は再計算されます。",
+      "field_insured": "被保険者",
+      "field_asset": "対象",
+      "field_coverage": "補償",
+      "field_premium": "保険料",
+      "field_insurer": "保険会社",
+      "generate": "見積を生成",
+      "generating": "書類を生成しています…",
+      "done_title": "見積を生成しました",
+      "done_hint": "顧客へ送る準備ができています。",
+      "pdf_kicker": "見積",
+      "pdf_slogan": "築いたものを守る",
+      "restart": "もう一度実行",
+      "file": {
+        "auto": "porto-seguro-quote.pdf",
+        "home": "mapfre-home-quote.pdf",
+        "business": "bradesco-commercial-quote.pdf"
+      },
+      "sample": {
+        "auto": {
+          "insurer": "Porto Seguro",
+          "insured": "Ana Souza",
+          "asset": "Honda Civic EXL 2022 · ABC-1D23",
+          "coverage": "車両保険（包括）",
+          "premium": "R$ 2,847.90"
+        },
+        "home": {
+          "insurer": "MAPFRE",
+          "insured": "Carlos Mendes",
+          "asset": "住宅 — Caçador, SC",
+          "coverage": "火災 + 盗難",
+          "premium": "R$ 1,120.00"
+        },
+        "business": {
+          "insurer": "Bradesco",
+          "insured": "Ateliê Serra Ltda",
+          "asset": "商業物件、180 m²",
+          "coverage": "企業向け包括",
+          "premium": "R$ 4,350.00"
+        }
+      },
+      "drop_active": "PDFをドロップして取り込み",
+      "confidence": "信頼度 {n}%",
+      "edited": "編集済み",
+      "deductible": "免責",
+      "restore": "抽出結果に戻す",
+      "required": "被保険者と対象は必須です。",
+      "coverages": {
+        "auto": {
+          "comprehensive": "車両保険",
+          "third_party": "対人対物",
+          "glass": "火災＋ガラス"
+        },
+        "home": {
+          "fire_theft": "火災＋盗難",
+          "full": "住宅フル",
+          "basic": "基本"
+        },
+        "business": {
+          "full": "企業フル",
+          "fire": "火災",
+          "liability": "賠償"
+        }
+      },
+      "deductibles": {
+        "low": "0.5%",
+        "mid": "1%",
+        "high": "2%"
+      }
+    },
+    "categories": {
+      "public": "商用（公開）",
+      "private": "商用（非公開）"
+    },
+    "blurb": {
+      "public": "社名の公開を許可してくれた企業です。システムのソースは非公開のままです。",
+      "private": "NDA下のクライアント案件です。社名なし、リポジトリなし、ソースに南京錠です。"
+    },
+    "confidential_hint": "クライアントの要請により、名前とソースは省略しています。",
+    "actions": {
+      "live": "サイトを見る",
+      "repo": "リポジトリを見る"
+    },
+    "items": {
+      "cacador": {
+        "name": "Caçador Seguros",
+        "client": "Corretora de Seguros Caçador",
+        "description": "ブローカー向けの社内見積システムです。ブローカーが保険会社の見積PDFを取り込み、アプリが出所を検出し、フィールドを抽出し、Caçador独自のレイアウトで書類を発行します。自動車、トラック、住宅、企業向けです。",
+        "how": {
+          "import": {
+            "title": "保険会社のPDF",
+            "body": "元の見積をアップロードします。Porto、Bradesco、MAPFRE、Allianz、Tokio、HDI、Azul、Yelumです。"
+          },
+          "extract": {
+            "title": "自動抽出",
+            "body": "保険会社ごとのパーサーがPDFを読み、出所を検出し、被保険者、対象、補償、免責を入力します。"
+          },
+          "review": {
+            "title": "確認",
+            "body": "すべてのフィールドは編集可能なままです。ブローカーは発行前に必要な箇所を調整します。"
+          },
+          "issue": {
+            "title": "ブローカーの書類",
+            "body": "見積はCaçadorのレイアウトで出力され、顧客へ送る準備ができます。"
+          }
+        },
+        "cta": "ブローカーのウェブサイト",
+        "sim_hint": "見積を取り込み、抽出を調整してブローカー書類を発行します。"
+      },
+      "events": {
+        "name": "イベント駆動プラットフォーム",
+        "client": "機密クライアント",
+        "description": "Spring BootのBFFとだけ話すVue.js SPAです。BFFはKeycloakで認証し、RabbitMQへコマンドを発行し、自身のPostgreSQLを所有するworkerがHTTPリクエストの外で処理します。シークレットはVaultにあり、ソースにはありません。",
+        "how": {
+          "spa": {
+            "title": "クライアントのインテント",
+            "body": "PWAはトークンをPiniaに保持し、workerを直接呼び出すことはありません。"
+          },
+          "bff": {
+            "title": "BFFが認可",
+            "body": "JWTを検証し、RBACを適用し、インテントをキューのコマンドにします。"
+          },
+          "queue": {
+            "title": "RabbitMQ",
+            "body": "メッセージは、そのbounded contextの契約に従い、correlation-idを付けます。"
+          },
+          "worker": {
+            "title": "Workerが永続化",
+            "body": "キューを消費し、自身のPostgreSQLへ書き込み、同じ経路で返します。"
+          }
+        },
+        "sim": {
+          "title": "コマンドパイプライン",
+          "aria": "イベント駆動プラットフォーム上のコマンドのウォークスルー",
+          "select_label": "どのコマンドを発行しますか？",
+          "steps": {
+            "select": "インテント",
+            "run": "パイプライン",
+            "review": "レスポンス",
+            "done": "OK"
+          },
+          "choices": {
+            "create": "注文を作成",
+            "query": "照会",
+            "retry": "再処理"
+          },
+          "review_title": "BFFのレスポンス",
+          "review_hint": "本番システムではJSONとして戻り、ヘッダーにcorrelation-idが付きます。",
+          "confirm": "レスポンスを受け入れる",
+          "done_title": "コマンドを受け入れました",
+          "done_hint": "workerはすでにメッセージを受け取っています。",
+          "field_labels": {
+            "trace": "トレース",
+            "queue": "キュー",
+            "status": "ステータス",
+            "latency": "レイテンシ"
+          },
+          "logs": {
+            "create": [
+              "GatewayがPOST /ordersを受信しました",
+              "BFFがKeycloakでJWTを検証しました",
+              "コマンドをorders.createdへ発行しました",
+              "Workerが注文を永続化しました"
+            ],
+            "query": [
+              "gatewayでGET /orders/1842",
+              "BFFが読み取りを認可しました",
+              "orders.query上のRPC",
+              "Workerがスナップショットを返しました"
+            ],
+            "retry": [
+              "POST /orders/1842/retry",
+              "BFFが重複を拒否し再発行しました",
+              "orders.retry上のメッセージ",
+              "Workerがoutboxを再生しました"
+            ]
+          },
+          "sample": {
+            "create": {
+              "trace": "trc-9f2a",
+              "queue": "orders.created",
+              "status": "accepted",
+              "latency": "42 ms"
+            },
+            "query": {
+              "trace": "trc-1c88",
+              "queue": "orders.query",
+              "status": "found",
+              "latency": "19 ms"
+            },
+            "retry": {
+              "trace": "trc-77b0",
+              "queue": "orders.retry",
+              "status": "requeued",
+              "latency": "31 ms"
+            }
+          },
+          "hops": {
+            "spa": "SPA",
+            "gateway": "Gateway",
+            "bff": "BFF",
+            "queue": "RabbitMQ",
+            "worker": "Worker"
+          },
+          "hop_status": {
+            "idle": "待機",
+            "active": "処理中",
+            "ok": "ok",
+            "fail": "timeout"
+          },
+          "inject_fail": "Workerのタイムアウトを模擬",
+          "fail_title": "Workerが応答しませんでした",
+          "fail_hint": "メッセージはDLQへ送られました。再投入して経路を続けます。",
+          "retry": "メッセージを再投入",
+          "copy_trace": "correlation-idをコピー",
+          "copied": "コピーしました"
+        },
+        "sim_hint": "コマンドを発火し SPA → gateway → BFF → RabbitMQ → worker を辿る。タイムアウトも注入できます。",
+        "bff": {
+          "hint": "Spring Boot BFFとしてディスパッチ: JWT、RBAC、RabbitMQ rpcCall、レスポンスエンベロープ。",
+          "title": "BFF · resource server",
+          "incoming": "受信 HTTP",
+          "dispatch": "BFFへ送信",
+          "worker_label": "Worker / RPC",
+          "jwt": {
+            "valid": "有効なトークン",
+            "expired": "期限切れトークン"
+          },
+          "roles": {
+            "write": "orders.write",
+            "read": "orders.read",
+            "none": "ロールなし"
+          },
+          "worker": {
+            "ok": "Reply OK",
+            "timeout": "RPCタイムアウト"
+          },
+          "steps": {
+            "request": "HTTP",
+            "auth": "Auth",
+            "rpc": "RPC",
+            "envelope": "Envelope"
+          },
+          "stages": {
+            "http": "HttpServletRequest",
+            "jwt": "JwtDecoder / JWK",
+            "rbac": "MethodSecurity",
+            "rpc": "RabbitTemplate rpcCall",
+            "reply": "ResponseEntity"
+          },
+          "stage_status": {
+            "idle": "待機",
+            "active": "実行中",
+            "ok": "成功",
+            "fail": "失敗"
+          },
+          "logs": {
+            "http": "受信 {route}",
+            "jwt_valid": "JwtDecoder: 署名 + exp OK (Keycloak JWK)",
+            "jwt_expired": "JwtDecoder: exp が過去 → 401",
+            "rbac_write": "hasAuthority('orders.write')",
+            "rbac_read": "hasAuthority('orders.read')",
+            "rbac_none": "AccessDeniedException",
+            "rpc": "RabbitTemplate.convertSendAndReceive({queue})",
+            "reply_accepted": "202 Accepted · ヘッダーに correlation-id",
+            "reply_timeout": "504 · メッセージは DLQ へ"
+          }
+        }
+      },
+      "support": {
+        "name": "サポートコンソール",
+        "client": "機密クライアント",
+        "description": "サポートチーム向けの社内ツールです。依頼を分類し、迅速な修正を探し、追跡可能なプロトコルを開きます。チャットからインシデントを所有するチームまでの経路を短くするために作りました。",
+        "how": {
+          "intake": {
+            "title": "依頼が入る",
+            "body": "チャットまたは電話です。アナリストは文脈を落とさずに経緯を記録します。"
+          },
+          "classify": {
+            "title": "分類",
+            "body": "優先度とキューは単純なルールから出ます。アクセス、請求、障害です。"
+          },
+          "solve": {
+            "title": "修正またはエスカレーション",
+            "body": "社内ナレッジが手順を提案し、それで足りなければ文書で引き継ぎます。"
+          },
+          "protocol": {
+            "title": "プロトコル",
+            "body": "すべては追跡可能な番号に結び付き、履歴が消えません。"
+          }
+        },
+        "sim": {
+          "title": "サポートキュー",
+          "aria": "社内サポートコンソールのウォークスルー",
+          "select_label": "今入ったチケットはどれですか？",
+          "steps": {
+            "select": "チケット",
+            "run": "トリアージ",
+            "review": "引き継ぎ",
+            "done": "プロトコル"
+          },
+          "choices": {
+            "access": "アクセス",
+            "billing": "請求",
+            "outage": "障害"
+          },
+          "review_title": "プロトコルを開く準備ができています",
+          "review_hint": "本番システムでは、アナリストは保存前にメモを編集できます。",
+          "confirm": "プロトコルを開く",
+          "done_title": "プロトコルを開きました",
+          "done_hint": "所有チームはすでにチケットを持っています。",
+          "field_labels": {
+            "ticket": "チケット",
+            "priority": "優先度",
+            "owner": "キュー",
+            "protocol": "プロトコル"
+          },
+          "logs": {
+            "access": [
+              "報告: 利用者がモジュールを開けない",
+              "アクセスとして分類",
+              "提案記事: 権限のリセット",
+              "キュー: identity"
+            ],
+            "billing": [
+              "報告: 請求書の重複",
+              "請求として分類",
+              "提案: ERPで期間を確認",
+              "キュー: finance"
+            ],
+            "outage": [
+              "報告: ログイン後に空白画面",
+              "障害として分類",
+              "提案: gatewayの状態を確認",
+              "キュー: platform"
+            ]
+          },
+          "sample": {
+            "access": {
+              "ticket": "#4821",
+              "priority": "中",
+              "owner": "Identity",
+              "protocol": "PRT-10492"
+            },
+            "billing": {
+              "ticket": "#4822",
+              "priority": "低",
+              "owner": "Finance",
+              "protocol": "PRT-10493"
+            },
+            "outage": {
+              "ticket": "#4823",
+              "priority": "高",
+              "owner": "Platform",
+              "protocol": "PRT-10494"
+            }
+          },
+          "stories": {
+            "access": "最終デプロイ後、ユーザーが財務モジュールを開けません。セッションは有効に見えます。",
+            "billing": "同一期間の請求書が2通届きました。重複の取消を求めています。",
+            "outage": "複数席でログイン後に白紙画面。ゲートウェイの状態は不明です。"
+          },
+          "priority_label": "優先度",
+          "queue_label": "キュー",
+          "continue": "メモへ進む",
+          "back": "トリアージに戻る",
+          "note_label": "引き継ぎメモ",
+          "note_placeholder": "試したことと、担当チームが知るべきこと…",
+          "priorities": {
+            "low": "低",
+            "medium": "中",
+            "high": "高"
+          },
+          "queues": {
+            "identity": "ID",
+            "finance": "経理",
+            "platform": "基盤"
+          }
+        }
+      },
+      "pwa": {
+        "name": "オペレーションPWA",
+        "client": "機密クライアント",
+        "description": "カウンター業務向けのVue Progressive Web Appです。オフラインで動き、端末上で操作をキューし、ネットワーク復帰時に同期します。販売も在庫移動も落としません。",
+        "how": {
+          "install": {
+            "title": "端末にインストール",
+            "body": "アプリとして開きます。service workerがシェルと直近のデータを保持します。"
+          },
+          "offline": {
+            "title": "オフラインで動く",
+            "body": "販売、在庫移動、締めはローカルキューに入ります。"
+          },
+          "queue": {
+            "title": "端末上のキュー",
+            "body": "IndexedDBが、ネットワークが安定するまでインテントを保持します。"
+          },
+          "sync": {
+            "title": "同期",
+            "body": "接続が戻ると、BFFに対して順序どおりに再生します。"
+          }
+        },
+        "sim": {
+          "title": "オフラインモード",
+          "aria": "オペレーションPWAのオフラインと同期のウォークスルー",
+          "select_label": "カウンターで何が起きますか？",
+          "steps": {
+            "select": "操作",
+            "run": "ローカル",
+            "review": "キュー",
+            "done": "同期"
+          },
+          "choices": {
+            "sale": "販売",
+            "stock": "在庫",
+            "close": "締め"
+          },
+          "review_title": "ローカルキュー",
+          "review_hint": "ネットワークはありません。まだ何も送っていません。",
+          "confirm": "オンラインに戻る",
+          "done_title": "同期しました",
+          "done_hint": "BFFが{n}件の意図を確認しました。",
+          "field_labels": {
+            "device": "端末",
+            "mode": "モード",
+            "pending": "保留",
+            "synced": "同期"
+          },
+          "logs": {
+            "sale": [
+              "Service worker: シェルをキャッシュ済み",
+              "販売をIndexedDBへ書き込みました",
+              "ローカルキュー: インテント1件",
+              "オフライン — 待機中"
+            ],
+            "stock": [
+              "ローカルの在庫移動",
+              "ドキュメントバージョンで競合を回避",
+              "ローカルキュー: インテント2件",
+              "オフライン — 待機中"
+            ],
+            "close": [
+              "締めを開始しました",
+              "端末上で合計を確認しました",
+              "ローカルキュー: インテント3件",
+              "オフライン — 待機中"
+            ]
+          },
+          "sample": {
+            "sale": {
+              "device": "Tablet-04",
+              "mode": "オフライン",
+              "pending": "販売 1件",
+              "synced": "保留"
+            },
+            "stock": {
+              "device": "Tablet-04",
+              "mode": "オフライン",
+              "pending": "移動 2件",
+              "synced": "保留"
+            },
+            "close": {
+              "device": "Tablet-04",
+              "mode": "オフライン",
+              "pending": "3件",
+              "synced": "保留"
+            }
+          },
+          "online": "オンライン",
+          "offline": "オフライン",
+          "device": "端末",
+          "pending_count": "件保留",
+          "queue_title": "端末上のキュー",
+          "queue_empty": "まだ意図はありません。売上・在庫・締めを登録してください。",
+          "item_status": {
+            "queued": "待機",
+            "syncing": "同期中",
+            "synced": "同期済",
+            "conflict": "競合"
+          },
+          "resolve": "ローカル版を残す",
+          "sync": "BFFと同期",
+          "offline_hint": "オンラインに戻すとキューをBFFへ再生します。"
+        },
+        "sim_hint": "オフラインで操作し、複数の intent をキューに入れ、オンラインに戻って BFF と同期します。",
+        "bff": {
+          "hint": "BFFがオフラインキューを受信: JWT、冪等性、順次適用、バージョン衝突時は 409。",
+          "title": "BFF · replay",
+          "batch": "リプレイバッチ",
+          "dispatch": "POST replay",
+          "jwt": {
+            "valid": "有効なトークン",
+            "expired": "期限切れトークン"
+          },
+          "steps": {
+            "request": "HTTP",
+            "auth": "Auth",
+            "apply": "Apply",
+            "envelope": "Envelope"
+          },
+          "logs": {
+            "receive": "/v1/ops/replay で {n} 件の intent を受信",
+            "jwt_valid": "JwtDecoder: token OK",
+            "jwt_expired": "JwtDecoder: 期限切れ → 401",
+            "apply_sale": "SALE 適用 · idempotency-key ok",
+            "apply_stock": "STOCK 適用 · バージョン確認",
+            "apply_close": "CLOSE 適用 · 期待バージョン",
+            "result_ok": "{intent}: 永続化",
+            "result_conflict": "{intent}: 409 バージョン衝突"
+          },
+          "item_status": {
+            "idle": "キュー",
+            "active": "適用中",
+            "ok": "ok",
+            "conflict": "衝突",
+            "rejected": "拒否"
+          },
+          "status": {
+            "200": "リプレイ受理",
+            "401": "未認証",
+            "409": "締め処理の衝突"
+          }
+        }
+      }
+    },
+    "views": {
+      "front": "Front",
+      "bff": "BFF"
+    }
+  },
+  "experience": {
+    "title": "経歴",
+    "subtitle": "大学からフルスタックの仕事まで。サポート、プロダクト、そして今使っているスタックです。",
+    "now": "現在",
+    "location": "クリチバ、パラナ州、ブラジル",
+    "month_year": "{year}年{month}",
+    "range": "{start} – {end}",
+    "range_present": "{start} – 現在",
+    "n_years": "{n}年 | {n}年",
+    "n_months": "{n}か月 | {n}か月",
+    "months": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "types": {
+      "contract": "契約",
+      "fulltime": "正社員",
+      "internship": "インターンシップ",
+      "education": "学歴"
+    },
+    "modes": {
+      "hybrid": "ハイブリッド",
+      "remote": "リモート"
+    },
+    "companies": {
+      "saastec": "SaaSTec Labs",
+      "korp": "Korp ERP | by Viasoft",
+      "education": "学士課程"
+    },
+    "roles": {
+      "fullstack": {
+        "title": "フルスタックエンジニア",
+        "summary": "RabbitMQを用いたイベント駆動マイクロサービスアーキテクチャで、Vue.js（PWA）とSpring Bootに注力するフルスタックエンジニアです。BFF、Keycloak認証、Vaultによるシークレット管理、PostgreSQL（DBeaver）への永続化の経験があります。PrometheusとGrafanaによる監視と可観測性。Gitによるバージョン管理と、Jenkins上のCI/CDパイプラインです。"
+      },
+      "korpSenior": {
+        "title": "シニアサポートアナリスト",
+        "summary": "チャットと電話で顧客対応するサポートアナリストとして勤務しました。依頼を素早く特定し、即時の修正を探し、優先度を付けました。書面の引き継ぎとチケット追跡で、適切なチームへインシデントをエスカレーションしました。"
+      },
+      "saastecSenior": {
+        "title": "シニアサポートアナリスト",
+        "summary": "正社員採用後も、チャットと電話で顧客をサポートし、依頼を素早く見つけ、インシデントの引き継ぎを文書化しました。並行して、サポートキューの外で、会社のアプリケーションへパートタイムで貢献し始めました。"
+      },
+      "saastecJunior": {
+        "title": "ジュニアサポートアナリスト",
+        "summary": "顧客サポートと開発を混ぜたインターンシップです。サポートではチャットと電話を扱い、依頼を素早く特定し、インシデントの引き継ぎを文書化しました。開発者としては、サポート業務を速くする社内ツールを作りました。"
+      },
+      "degree": {
+        "title": "大学",
+        "summary": "2021年4月に学位課程を始め、2023年6月に修了しました。SaaSTec Labsのインターンシップと重なっています。"
+      }
+    },
+    "skill": {
+      "vue": "Vue.js",
+      "spring": "Spring Boot",
+      "rabbitmq": "RabbitMQ",
+      "keycloak": "Keycloak",
+      "vault": "Vault",
+      "postgres": "PostgreSQL",
+      "prometheus": "Prometheus",
+      "grafana": "Grafana",
+      "git": "Git",
+      "jenkins": "Jenkins",
+      "data": "データ分析",
+      "systems": "システム分析",
+      "customer": "カスタマーサポート",
+      "incidents": "インシデント管理",
+      "chat": "チャット",
+      "phone": "電話",
+      "dev": "開発",
+      "internal": "社内ツール"
+    }
+  },
+  "contact": {
+    "title": "お話しましょう",
+    "subtitle": "フルスタックのポジション、アーキテクチャの対話、協業に開いています。仕事の機会にはメールが望ましい連絡手段です。",
+    "availability": "新しい機会を募集しています",
+    "location": "クリチバ、パラナ州、ブラジル",
+    "response": "通常48時間以内に返信します",
+    "cta_email": "メールを書く",
+    "copy": "メールをコピー",
+    "copied": "メールをコピーしました",
+    "preferred": "推奨",
+    "email": "メール",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email_hint": "機会、提案、仕事の対話に望ましいチャネルです。",
+    "linkedin_hint": "職務経歴、経験、推薦です。",
+    "github_hint": "リポジトリ、ケーススタディ、公開コードです。",
+    "open_linkedin": "LinkedInプロフィールを見る",
+    "open_github": "GitHubリポジトリを見る",
+    "mail_subject": "お問い合わせ — Mateus Matyak"
+  },
+  "footer": {
+    "rights": "全著作権所有。",
+    "built_with": "Vue 3、TypeScript、Viteで構築"
+  },
+  "actions": {
+    "toggle_theme": "テーマを切り替える",
+    "change_language": "言語を変更する"
+  }
+}

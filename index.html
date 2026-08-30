@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mateus Matyak | Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Mateus Matyak, full-stack developer specializing in secure, event-driven microservices with Vue.js, Spring Boot, Keycloak, RabbitMQ and Vault."
+    />
+    <link rel="canonical" href="https://mateusmatyak-git.github.io/" />
+    <meta name="theme-color" content="#0a0f1c" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mateus Matyak" />
+    <meta property="og:title" content="Mateus Matyak | Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="I design and build secure, event-driven microservice ecosystems — Vue.js on the front, Spring Boot BFF, Keycloak, RabbitMQ and Vault."
+    />
+    <meta property="og:url" content="https://mateusmatyak-git.github.io/" />
+    <meta property="og:image" content="https://mateusmatyak-git.github.io/og-image.png" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+    <meta property="og:locale" content="en" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mateus Matyak | Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="I design and build secure, event-driven microservice ecosystems — Vue.js on the front, Spring Boot BFF, Keycloak, RabbitMQ and Vault."
+    />
+    <meta
+      name="twitter:image"
+      content="https://mateusmatyak-git.github.io/og-image.png"
+    />
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          document.documentElement.setAttribute('data-theme', theme)
+        } catch (e) {}
+      })()
+    </script>
+    <script type="text/javascript">
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

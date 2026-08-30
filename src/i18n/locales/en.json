@@ -1,0 +1,1204 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "architecture": "Architecture",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "menu": "Open menu",
+    "primary": "Primary"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Mateus Matyak",
+    "role": "Full-Stack Developer",
+    "tagline": "I design and build secure, event-driven microservice ecosystems, from Vue.js frontends to Spring Boot backends.",
+    "availability": "Available for new opportunities",
+    "about_cta": "About me. Click to read",
+    "about_title": "About Me",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch"
+  },
+  "about": {
+    "body": "I'm a full-stack developer focused on distributed systems. Day to day, I design microservice architectures where a Vue.js frontend talks to a Spring Boot BFF, which authenticates through Keycloak and coordinates backend services asynchronously over RabbitMQ.\n\nEvery credential is managed centrally through Vault. Nothing hardcoded, nothing exposed in code. I care about systems that are secure by default, observable in production, and built to scale horizontally without drama.\n\nWhether it's a Vue 3 component tree or a message contract between services, I sweat the details that keep a system boring in the best way: predictable, resilient, and easy to reason about."
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "The same stack as the two flows: Vue 3 to the BFF, workers on RabbitMQ, PostgreSQL per service. Git Flow, Jenkins and OKE on the other side.",
+    "tech_guide_cta": "See what each one actually does",
+    "carousel_prev": "Previous category",
+    "carousel_next": "Next category",
+    "categories": {
+      "frontend": {
+        "title": "Frontend",
+        "subtitle": "A Vue 3 SPA. Token in Pinia, PKCE against Keycloak. Every HTTP intent goes through the gateway — the worker has no web surface."
+      },
+      "backend": {
+        "title": "Backend & Messaging",
+        "subtitle": "HTTP on the BFF, none on the worker. OpenAPI on the BFF; RPC on RabbitMQ, contract in the same delivery as the queue."
+      },
+      "data": {
+        "title": "Data",
+        "subtitle": "Each worker owns its PostgreSQL schema. No FK across services; reading another context goes through RPC."
+      },
+      "security": {
+        "title": "Security & Identity",
+        "subtitle": "Keycloak issues the JWT, the BFF authorizes, Vault injects at runtime. Redis rate-limits at the gateway by peer IP."
+      },
+      "observability": {
+        "title": "Observability",
+        "subtitle": "Grafana orchestrates Prometheus and Loki. Metrics and logs on the same dashboard, correlated by correlation-id."
+      },
+      "testing": {
+        "title": "Testing & Quality",
+        "subtitle": "JUnit for domain logic, node:test on the front, ArchUnit on the worker profile. Sonar is the gate: a new violation does not pass."
+      },
+      "devops": {
+        "title": "DevOps & CI/CD",
+        "subtitle": "Git Flow with no app master. Jenkins reads the prefix; Docker is the same artifact; OKE isolates staging and production."
+      }
+    }
+  },
+  "techGuide": {
+    "back_cta": "Back to Skills",
+    "title": "What Each Piece Is Actually For",
+    "intro": "Every tool below earns its place for two reasons: what it does for the system while I'm building it, and what that turns into once someone is actually using it. This is that connection, spelled out.",
+    "dev_label": "In development",
+    "impact_label": "For the user",
+    "items": {
+      "vue": {
+        "dev": "SPA. Authenticates with PKCE, keeps the token in Pinia and never calls a worker.",
+        "impact": "Pages feel instant and fluid. Interactions respond immediately, with no jarring full-page reloads."
+      },
+      "typescript": {
+        "dev": "Catches type errors before they ship, across the entire codebase.",
+        "impact": "Fewer bugs reach production, which means a more stable, predictable app day to day."
+      },
+      "vite": {
+        "dev": "Builds and bundles the app with near-instant hot reload during development.",
+        "impact": "Faster load times, thanks to optimized, minimal bundles shipped to the browser."
+      },
+      "primevue": {
+        "dev": "The SPA design system. Ready UI patterns, without rebuilding buttons and forms on every screen.",
+        "impact": "Consistent, polished interactions. Buttons, forms and menus behave the way they expect."
+      },
+      "vuerouter": {
+        "dev": "SPA navigation. Each page only downloads its code when the route asks for it.",
+        "impact": "Pages load faster, because the browser only downloads what the current view requires."
+      },
+      "pinia": {
+        "dev": "The token lives here. The front session does not leak onto the worker.",
+        "impact": "Actions stay in sync across the whole app. No stale or conflicting screens."
+      },
+      "junit": {
+        "dev": "Pure logic against real objects. No business mocks, no trivial getters, no testing Spring itself.",
+        "impact": "The rule they trigger was already exercised on the slice that matters, not on the framework."
+      },
+      "nodetest": {
+        "dev": "The front tests on Node itself. One runtime, one test — coverage comes from here, not a parallel runner.",
+        "impact": "What the screen computes is the same contract the pipeline measures. No surprise on the journey."
+      },
+      "archunit": {
+        "dev": "The worker profile is a test. Changing the rule means changing every worker in the same delivery.",
+        "impact": "A service does not grow HTTP or JDBC by accident. The responsibility cut holds."
+      },
+      "eslint": {
+        "dev": "The bar the gate will enforce already fails in the editor. No waiting for the pipeline to find out.",
+        "impact": "Fewer subtle bugs slip through, because the code reaches the gate already on the same bar."
+      },
+      "sonar": {
+        "dev": "Default gate on develop and feature/*. Zero new violations, new coverage ≥80. No bypass.",
+        "impact": "What ships already met a fixed bar. Nobody loosens it on deploy day."
+      },
+      "springboot": {
+        "dev": "HTTP on the BFF, none on the worker. Delivery includes the test; compile alone is not enough.",
+        "impact": "Requests are handled reliably, even when real-world traffic spikes."
+      },
+      "rabbitmq": {
+        "dev": "A new routing key ships with its contract. Springwolf and the test land in the same delivery as the queue.",
+        "impact": "Actions still complete even if a service is momentarily slow. Nothing just silently fails."
+      },
+      "openapi": {
+        "dev": "HTTP contract on the BFF, versioned with the code. No parallel wiki.",
+        "impact": "What the screen calls is the same contract the service exposes."
+      },
+      "postgresql": {
+        "dev": "Each worker writes only to its own tables. No physical FK across services.",
+        "impact": "Their orders, profiles and history stay accurate and are never left half-written."
+      },
+      "keycloak": {
+        "dev": "Centralizes login, tokens and permissions instead of building auth from scratch per service.",
+        "impact": "One account, one login. Access stays secure without extra friction getting in the way."
+      },
+      "openid": {
+        "dev": "Standardizes how the frontend, BFF and services all trust the same identity token.",
+        "impact": "Their session stays valid and secure across the entire app, not just one page."
+      },
+      "vault": {
+        "dev": "Injects every credential at runtime. The same application.yml is used in every environment.",
+        "impact": "Their data is protected by infrastructure that was never exposed in a leaked repository."
+      },
+      "redis": {
+        "dev": "Rate-limit at the gateway. The key is the peer IP, not a header the client invents.",
+        "impact": "Abuse stops at the edge, without penalizing a legitimate request on the BFF."
+      },
+      "grafana": {
+        "dev": "Metrics and logs on the same dashboard, correlated by correlation-id.",
+        "impact": "The problem shows up as an alert before it becomes a ticket."
+      },
+      "prometheus": {
+        "dev": "Scrape on the BFF, push on the worker. No HTTP health surface on the worker.",
+        "impact": "Latency and errors reach Grafana without opening an extra surface."
+      },
+      "loki": {
+        "dev": "JSON logs with correlation-id. No passwords, JWTs or tax ids in the log.",
+        "impact": "A request can be followed without leaking what must not leak."
+      },
+      "docker": {
+        "dev": "The job passes MODE. Same Dockerfile, same artifact; the destination changes, not the recipe.",
+        "impact": "What was tested is exactly what they get. No environment-specific surprises."
+      },
+      "jenkins": {
+        "dev": "The branch prefix is the contract. develop goes to staging; feature/* only validates; release/* waits for confirmation before production.",
+        "impact": "Staging and production do not mix. What they see already went through the real environment."
+      },
+      "git": {
+        "dev": "Feature and hotfix from develop. A release is a cut — no new commits, no app master. One PR, one delivery.",
+        "impact": "Every change that reaches them came from a reviewable slice, not from an eternal branch."
+      },
+      "kubernetes": {
+        "dev": "OKE. Staging and production each in their own compartment. Same path, different quota.",
+        "impact": "What was validated in test ships in the same shape, isolated, with more CPU."
+      }
+    }
+  },
+  "architecture": {
+    "intro": {
+      "title": "Architecture",
+      "subtitle": "Two views into how I work: the day-to-day flow and the architecture I design for systems."
+    },
+    "title": "How I Architect Applications",
+    "subtitle": "The frontend talks to the gateway, the BFF authenticates and publishes RPC to RabbitMQ, and the workers persist to PostgreSQL. No JDBC on the BFF, no HTTP on the workers.",
+    "diagram": {
+      "caption": "The user authenticates with Keycloak (PKCE). The gateway routes, rate-limits and injects a correlation-id; the BFF validates the JWT, authorizes by role and publishes an RPC to RabbitMQ. The worker listens with no HTTP surface, runs the business rule and persists to the schema it owns. Vault injects secrets at runtime. Grafana orchestrates Prometheus and Loki: metric scrape and push, JSON logs, dashboards and alerts in one place.",
+      "groups": {
+        "http": "HTTP",
+        "persistence": "Persistence"
+      },
+      "nodes": {
+        "client": {
+          "title": "Frontend",
+          "subtitle": "Vue 3 · PKCE"
+        },
+        "gateway": {
+          "title": "API Gateway",
+          "subtitle": "TLS · rate-limit"
+        },
+        "bff": {
+          "title": "BFF",
+          "subtitle": "The HTTP messenger"
+        },
+        "oauth": {
+          "title": "OAuth2 JWT",
+          "subtitle": "Resource server"
+        },
+        "openapi": {
+          "title": "OpenAPI",
+          "subtitle": "SpringDoc"
+        },
+        "rbac": {
+          "title": "RBAC",
+          "subtitle": "Keycloak roles"
+        },
+        "validation": {
+          "title": "Validation",
+          "subtitle": "Bean Validation"
+        },
+        "queue": {
+          "title": "RabbitMQ",
+          "subtitle": "RPC · DLQ"
+        },
+        "services": {
+          "title": "Workers",
+          "subtitle": "No HTTP"
+        },
+        "amqp": {
+          "title": "AMQP listener",
+          "subtitle": "rpcCall"
+        },
+        "springwolf": {
+          "title": "Springwolf",
+          "subtitle": "AMQP contract"
+        },
+        "jpa": {
+          "title": "JPA",
+          "subtitle": "Owned schema"
+        },
+        "cache": {
+          "title": "Caffeine",
+          "subtitle": "Local cache"
+        },
+        "auth": {
+          "title": "Keycloak",
+          "subtitle": "Login · JWT"
+        },
+        "vault": {
+          "title": "Vault",
+          "subtitle": "Secrets"
+        },
+        "redis": {
+          "title": "Redis",
+          "subtitle": "Rate-limit"
+        },
+        "db": {
+          "title": "PostgreSQL",
+          "subtitle": "Database"
+        },
+        "prometheus": {
+          "title": "Prometheus",
+          "subtitle": "Metrics"
+        },
+        "loki": {
+          "title": "Loki",
+          "subtitle": "JSON logs"
+        },
+        "grafana": {
+          "title": "Grafana",
+          "subtitle": "Dashboards"
+        },
+        "dbeaver": {
+          "title": "DBeaver",
+          "subtitle": "SQL client"
+        }
+      },
+      "edges": {
+        "login": "PKCE",
+        "request": "HTTPS",
+        "strip": "/v1",
+        "publish": "RPC",
+        "consume": "consume",
+        "persist": "persist",
+        "validate": "validate JWT",
+        "secrets": "secrets",
+        "ratelimit": "rate-limit",
+        "scrape": "/metrics",
+        "logs": "logs",
+        "manage": "manages"
+      }
+    },
+    "learn_more": "Learn more about",
+    "details": {
+      "client": "The Vue 3 SPA. It authenticates with PKCE against Keycloak, keeps the token in Pinia and never calls a worker directly. Every HTTP intent goes through the gateway and lands on the BFF.",
+      "gateway": "Routing, TLS, rate-limiting and correlation-id. No business rules, no payload transformation. It forwards /api/... from the client to /v1/... on the BFF.",
+      "bff": "The only HTTP surface for the domain. It validates the JWT, authorizes by role, shapes the response for the UI and publishes work to RabbitMQ. No JDBC, no HTTP calls to workers.",
+      "oauth": "The BFF is an OAuth2 resource server. It checks the JWT against Keycloak's JWK on every call; the gateway does not own identity.",
+      "openapi": "SpringDoc on the BFF. The HTTP contract lives and versions with the code, not on a parallel wiki.",
+      "rbac": "Every domain API authorizes by the front client's Keycloak role. The frontend only hides what UX needs; the rule is enforced on the BFF.",
+      "validation": "Bean Validation on the BFF. A field error becomes a typed 400; a technical failure never leaks a stack, SQL or queue name in the HTTP body.",
+      "queue": "Synchronous RPC over RabbitMQ. Domain success and error come back in the envelope; timeout and DLQ become a technical failure. Exchange and routing key per service.",
+      "services": "Spring Boot workers with no HTTP. Each one listens to its own queues, runs the business rule and persists on its own deploy cadence. No starter-web.",
+      "amqp": "The AMQP listener is the worker's entry point. The BFF only publishes through rpcCall; the worker never returns a raw JPA entity in the envelope.",
+      "springwolf": "The AMQP contract is documented on the worker itself. Every new queue ships with its contract in the same delivery.",
+      "jpa": "Each worker owns its PostgreSQL schema. No physical FK across services; reading another bounded context's data goes through RPC.",
+      "cache": "Caffeine in the worker for local, short-lived data. It does not replace the database and does not leak another service's data.",
+      "db": "The system of record. Each service writes only to its own tables, through JPA/Hibernate, with ddl-auto set to validate outside development.",
+      "auth": "The identity provider. Login screen, short-lived OIDC tokens, and the source of the roles the BFF turns into authorization.",
+      "vault": "The only place credentials live. The same application.yml is used in every environment; Vault injects RMQ, database, JWT and the rest at runtime.",
+      "redis": "Rate-limiting and gateway support. The key is the peer IP, not a header the client can invent.",
+      "prometheus": "On the BFF, Actuator scrape. On workers, metrics are pushed, with no HTTP health surface. Latency and errors reach Grafana before users notice.",
+      "loki": "JSON logs with correlation-id, userId and level. Grafana queries Loki; no passwords, JWTs, tax ids or provider payloads in the log.",
+      "grafana": "The observability layer. Grafana orchestrates Prometheus and Loki: metrics and logs on the same dashboard, correlated by correlation-id, with alerts from what both collect.",
+      "dbeaver": "The SQL client I use to inspect schemas, run ad-hoc queries and debug data outside the application."
+    },
+    "footnote": "BFF, workers and frontend ship containerized with Docker. The same artifact is used in staging and production; what changes is the destination and the secrets from Vault.",
+    "workflow": {
+      "title": "How I Develop",
+      "subtitle": "Quality-gated delivery for systems that cannot break operations: a branch off develop, staging, QA, then a release to production.",
+      "caption": "Every change starts on a feature/* or hotfix/* branch cut from develop, and only lands after code review. On on-prem Jenkins, a scan starts the multibranch pipeline; the contract is the branch prefix: develop goes to staging, release/<version> goes to production. The staging pipeline runs checkout, tool install, tests (UT and SAST), Sonar Quality Gate, staging build and pre-production deploy. The deploy recreates the instance and reattaches the reserved IP, so DNS and the load balancer keep the same address. Staging and production repeat the same OCI path — DNS, load balancer, Ingress, OKE, Docker and JVM — each in its own compartment, with separate DNS and load balancers. With develop in staging, QA first covers the basic, highest-operational-impact flows, regardless of whether the change was a hotfix or a feature, then validates the change itself: that a hotfix actually fixed the bug, or that a feature was implemented and behaves as it should.",
+      "groups": {
+        "homologation": "Staging",
+        "qaChange": "Change validation",
+        "production": "Production"
+      },
+      "nodes": {
+        "develop": {
+          "title": "Develop",
+          "subtitle": "Complete application"
+        },
+        "feature": {
+          "title": "feature/*",
+          "subtitle": "New functionality"
+        },
+        "hotfix": {
+          "title": "hotfix/*",
+          "subtitle": "Bug fix"
+        },
+        "developMerge": {
+          "title": "Develop",
+          "subtitle": "Reviewed merge"
+        },
+        "review": {
+          "title": "Code Review",
+          "subtitle": "Pull Request"
+        },
+        "jenkins": {
+          "title": "Jenkins",
+          "subtitle": "Scan · staging"
+        },
+        "checkout": {
+          "title": "Checkout",
+          "subtitle": "Branch code"
+        },
+        "tools": {
+          "title": "Tool install",
+          "subtitle": "Tooling"
+        },
+        "test": {
+          "title": "Test · UT · SAST",
+          "subtitle": "Stage 1"
+        },
+        "sonar": {
+          "title": "Sonar QG",
+          "subtitle": "Stage 2"
+        },
+        "buildStaging": {
+          "title": "Build staging",
+          "subtitle": "Stage 3"
+        },
+        "deployPre": {
+          "title": "Pre-prod deploy",
+          "subtitle": "Reserved IP"
+        },
+        "staging": {
+          "title": "Staging",
+          "subtitle": "OCI compartment"
+        },
+        "dnsHomolog": {
+          "title": "DNS · test",
+          "subtitle": "OCI DNS"
+        },
+        "lbHomolog": {
+          "title": "Load balancer",
+          "subtitle": "HTTPS · SSL"
+        },
+        "ingressHomolog": {
+          "title": "Ingress",
+          "subtitle": "Route → service"
+        },
+        "okeHomolog": {
+          "title": "OKE · 256MB",
+          "subtitle": "0.5 CPU"
+        },
+        "dockerHomolog": {
+          "title": "Docker",
+          "subtitle": "Same artifact"
+        },
+        "jvmHomolog": {
+          "title": "JVM",
+          "subtitle": "Spring Boot"
+        },
+        "qa": {
+          "title": "QA",
+          "subtitle": "Validation"
+        },
+        "qaBasic": {
+          "title": "Basic tests",
+          "subtitle": "Highest operational impact"
+        },
+        "qaFeature": {
+          "title": "Feature verified",
+          "subtitle": "Behaves as expected"
+        },
+        "qaHotfix": {
+          "title": "Hotfix verified",
+          "subtitle": "Bug resolved"
+        },
+        "release": {
+          "title": "release/<version>",
+          "subtitle": "Production destination"
+        },
+        "jenkinsProd": {
+          "title": "Jenkins",
+          "subtitle": "Scan · production"
+        },
+        "checkoutProd": {
+          "title": "Checkout",
+          "subtitle": "Branch code"
+        },
+        "toolsProd": {
+          "title": "Tool install",
+          "subtitle": "Tooling"
+        },
+        "testProd": {
+          "title": "Test · UT · SAST",
+          "subtitle": "Stage 1"
+        },
+        "sonarProd": {
+          "title": "Input · tag",
+          "subtitle": "Confirmation"
+        },
+        "buildProd": {
+          "title": "Build production",
+          "subtitle": "Stage 3"
+        },
+        "deployProd": {
+          "title": "Production deploy",
+          "subtitle": "Reserved IP"
+        },
+        "production": {
+          "title": "Production",
+          "subtitle": "OCI compartment"
+        },
+        "dnsProd": {
+          "title": "DNS · prod",
+          "subtitle": "OCI DNS"
+        },
+        "lbProd": {
+          "title": "Load balancer",
+          "subtitle": "HTTPS · SSL"
+        },
+        "ingressProd": {
+          "title": "Ingress",
+          "subtitle": "Route → service"
+        },
+        "okeProd": {
+          "title": "OKE · autoscale",
+          "subtitle": "CPU · memory"
+        },
+        "dockerProd": {
+          "title": "Docker",
+          "subtitle": "Same artifact"
+        },
+        "jvmProd": {
+          "title": "JVM",
+          "subtitle": "Spring Boot"
+        }
+      },
+      "edges": {
+        "create": "creates branch",
+        "merge": "merge",
+        "approve": "review",
+        "scan": "scan",
+        "ready": "environment ready",
+        "validate": "validates",
+        "release": "creates release",
+        "deploy": "deploy"
+      },
+      "details": {
+        "develop": "The branch that holds the complete application. Every change starts from here.",
+        "feature": "A new-functionality branch, cut from develop. The feature/ prefix makes the kind of change explicit.",
+        "hotfix": "A bug-fix branch, cut from develop. The hotfix/ prefix makes it clear this is a fix, not a feature.",
+        "developMerge": "The merge into develop only happens after code review. That updated develop is what goes to staging.",
+        "review": "Every change goes through code review before landing on develop. That's the human gate before the pipeline.",
+        "jenkins": "On on-prem Jenkins, a scan starts the multibranch pipeline. The contract is the prefix: develop goes to staging; feature/*, hotfix/* and bugfix/* hit the gate and stop there.",
+        "checkout": "First pipeline stage: it checks out the code from the branch that is going to be built.",
+        "tools": "Installs the tools and dependencies the rest of the pipeline needs in order to run.",
+        "test": "First staging sub-stage. JUnit for domain logic, node:test on the front, then SAST. Compile without tests is not a delivery.",
+        "sonar": "Second sub-stage. Default gate: zero new violations, new coverage ≥80. If it fails, the pipeline stops. No bypass.",
+        "buildStaging": "Third sub-stage. Produces the staging artifact, ready for pre-production.",
+        "deployPre": "Fourth sub-stage. Recreates the instance in the staging compartment and attaches the reserved IP. DNS and the load balancer keep the same address; only the container changes.",
+        "staging": "OCI staging compartment, isolated from production. The request hits test DNS, then the load balancer, Ingress, OKE, container and JVM — the same sequence as production, with less CPU and memory. This is the environment QA uses to validate the product.",
+        "dnsHomolog": "Resolves the test URL to the public IP of this compartment's load balancer. It never points at the production LB.",
+        "lbHomolog": "Accepts HTTPS on 443, terminates SSL and forwards traffic onto the staging compartment's private network. The public IP is the reserved address the deploy reattaches.",
+        "ingressHomolog": "Reads the URL path and picks the microservice. An API route lands on the right BFF inside the staging cluster.",
+        "okeHomolog": "OKE orchestrates nodes and pods in this compartment. Staging containers are capped — 0.5 CPU and 256MB — so they do not consume production hardware.",
+        "dockerHomolog": "The same Docker artifact from the pipeline. A Linux environment identical to production, with a smaller CPU and memory quota.",
+        "jvmHomolog": "The JVM inside the container runs Spring Boot, applies the business rule and sends the response back along the same path.",
+        "qa": "QA steps in on staging after the pre-production deploy. First they cover what must not break, then they validate the change itself.",
+        "qaBasic": "Tests of the basic, highest-operational-impact flows. They always run, whether the change was a hotfix or a feature.",
+        "qaFeature": "If the change came from a feature/* branch, QA confirms the functionality was implemented and behaves as it should.",
+        "qaHotfix": "If the change came from a hotfix/* branch, QA confirms the bug was actually fixed and has not come back.",
+        "release": "A release/<version> branch, created after QA signs off. Jenkins treats that prefix as a build destined for production.",
+        "jenkinsProd": "The same scan, now on release/<version>. No gate again: the prefix authorizes production, with confirmation and a tag.",
+        "checkoutProd": "First production pipeline stage: it checks out the code from the release/<version> branch.",
+        "toolsProd": "Installs the tools and dependencies the rest of the production pipeline needs in order to run.",
+        "testProd": "First production sub-stage. Two steps: UT (unit tests) and SAST (static application security testing).",
+        "sonarProd": "On release/* the gate does not run again: the cut already passed on develop. Production waits for Jenkins confirmation and a semver tag.",
+        "buildProd": "Third sub-stage. Produces the production artifact.",
+        "deployProd": "Fourth sub-stage. Recreates the instance in the production compartment and attaches the reserved IP. DNS and the load balancer keep the same address; only the container changes.",
+        "production": "OCI production compartment, isolated from staging. Same request path — DNS, load balancer, Ingress, OKE, Docker and JVM — with its own DNS and LB, more CPU/memory, and autoscaling.",
+        "dnsProd": "The canonical domain points at the production load balancer. A different IP, a different compartment; tests never resolve here.",
+        "lbProd": "Dedicated LB for the production compartment. HTTPS on 443, SSL at the edge, internal traffic on the private network. The public IP is the reserved address the deploy reattaches.",
+        "ingressProd": "Same job as staging Ingress: the URL path selects the microservice. Separate cluster, separate compartment.",
+        "okeProd": "Production OKE. It brings pods up and replaces them, with more CPU and memory, and scales automatically with demand.",
+        "dockerProd": "The same artifact. It isolates the Linux process and applies the limits OKE set in this compartment.",
+        "jvmProd": "The JVM runs the business rule and returns JSON. The way back is Ingress → load balancer → user."
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of things I've built",
+    "empty": "Featured projects coming soon.",
+    "view_repo": "View repository",
+    "live_site": "Brokerage website",
+    "private": "Private source",
+    "private_hint": "The repository is closed. The code belongs to the brokerage.",
+    "how_title": "How the system works",
+    "sim_label": "Walkthrough",
+    "sim": {
+      "title": "Quoting system",
+      "subtitle": "Click through the flow. Sample data only.",
+      "aria": "Caçador Seguros quoting walkthrough",
+      "step_type": "Type",
+      "step_import": "PDF",
+      "step_review": "Review",
+      "step_done": "Document",
+      "select_label": "Which policy do you want to quote?",
+      "types": {
+        "auto": "Auto",
+        "home": "Home",
+        "business": "Commercial"
+      },
+      "import_title": "Import insurer PDF",
+      "import_hint": "Simulates reading a real quote. No file leaves your computer.",
+      "import_cta": "Import PDF",
+      "processing": "Processing PDF…",
+      "log_detect": "Detecting insurer…",
+      "log_found": "{insurer} identified",
+      "log_person": "Extracting insured-party data…",
+      "log_asset": "Extracting asset and coverages…",
+      "log_done": "Form filled",
+      "review_title": "Review quote",
+      "review_hint": "Edit extracted fields, pick coverages and a deductible. The premium recalculates.",
+      "field_insured": "Insured",
+      "field_asset": "Asset",
+      "field_coverage": "Coverage",
+      "field_premium": "Premium",
+      "field_insurer": "Insurer",
+      "generate": "Generate quote",
+      "generating": "Generating document…",
+      "done_title": "Quote generated",
+      "done_hint": "Ready to send to the client.",
+      "pdf_kicker": "Quote",
+      "pdf_slogan": "Protect what you've built",
+      "restart": "Run again",
+      "file": {
+        "auto": "porto-seguro-quote.pdf",
+        "home": "mapfre-home-quote.pdf",
+        "business": "bradesco-commercial-quote.pdf"
+      },
+      "sample": {
+        "auto": {
+          "insurer": "Porto Seguro",
+          "insured": "Ana Souza",
+          "asset": "Honda Civic EXL 2022 · ABC-1D23",
+          "coverage": "Comprehensive",
+          "premium": "R$ 2,847.90"
+        },
+        "home": {
+          "insurer": "MAPFRE",
+          "insured": "Carlos Mendes",
+          "asset": "Home — Caçador, SC",
+          "coverage": "Fire + Theft",
+          "premium": "R$ 1,120.00"
+        },
+        "business": {
+          "insurer": "Bradesco",
+          "insured": "Ateliê Serra Ltda",
+          "asset": "Commercial property, 180 m²",
+          "coverage": "Full commercial",
+          "premium": "R$ 4,350.00"
+        }
+      },
+      "drop_active": "Drop the PDF to import",
+      "confidence": "{n}% confidence",
+      "edited": "Edited",
+      "deductible": "Deductible",
+      "restore": "Restore extracted values",
+      "required": "Insured and asset are required.",
+      "coverages": {
+        "auto": {
+          "comprehensive": "Comprehensive",
+          "third_party": "Third party",
+          "glass": "Fire + glass"
+        },
+        "home": {
+          "fire_theft": "Fire + theft",
+          "full": "Full home",
+          "basic": "Basic"
+        },
+        "business": {
+          "full": "Full commercial",
+          "fire": "Fire",
+          "liability": "Liability"
+        }
+      },
+      "deductibles": {
+        "low": "0.5%",
+        "mid": "1%",
+        "high": "2%"
+      }
+    },
+    "categories": {
+      "public": "Commercial (public)",
+      "private": "Commercial (private)"
+    },
+    "blurb": {
+      "public": "Companies that allowed me to publish their name. The system source stays closed.",
+      "private": "Client work under NDA. No company name, no repository, padlock on the source."
+    },
+    "confidential_hint": "Name and source omitted at the client’s request.",
+    "actions": {
+      "live": "View site",
+      "repo": "View repository"
+    },
+    "items": {
+      "cacador": {
+        "name": "Caçador Seguros",
+        "client": "Corretora de Seguros Caçador",
+        "description": "Internal quoting system for the brokerage. Brokers import the insurer's quote PDF; the app detects the source, extracts the fields, and issues a document in Caçador's own layout — auto, truck, home, and commercial.",
+        "how": {
+          "import": {
+            "title": "Insurer PDF",
+            "body": "Upload the original quote — Porto, Bradesco, MAPFRE, Allianz, Tokio, HDI, Azul, or Yelum."
+          },
+          "extract": {
+            "title": "Automatic extraction",
+            "body": "Per-insurer parsers read the PDF, detect the source, and fill in the insured party, asset, coverages, and deductibles."
+          },
+          "review": {
+            "title": "Review",
+            "body": "Every field stays editable. The broker tweaks what they need before issuing."
+          },
+          "issue": {
+            "title": "Brokerage document",
+            "body": "The quote comes out in Caçador's layout, ready to send to the client."
+          }
+        },
+        "cta": "Brokerage website",
+        "sim_hint": "Import a quote, edit the extraction, then issue the brokerage document."
+      },
+      "events": {
+        "name": "Event-driven platform",
+        "client": "Confidential client",
+        "description": "A Vue.js SPA that only talks to a Spring Boot BFF. The BFF authenticates with Keycloak, publishes a command to RabbitMQ, and a worker — owner of its PostgreSQL — handles it off the HTTP request. Secrets live in Vault, never in source.",
+        "how": {
+          "spa": {
+            "title": "Intent in the client",
+            "body": "The PWA keeps the token in Pinia and never calls a worker directly."
+          },
+          "bff": {
+            "title": "BFF authorizes",
+            "body": "It validates the JWT, applies RBAC, and turns the intent into a queue command."
+          },
+          "queue": {
+            "title": "RabbitMQ",
+            "body": "The message follows that bounded context’s contract, with a correlation-id."
+          },
+          "worker": {
+            "title": "Worker persists",
+            "body": "It consumes the queue, writes to its own PostgreSQL, and returns along the same path."
+          }
+        },
+        "sim": {
+          "title": "Command pipeline",
+          "aria": "Walkthrough of a command on the event-driven platform",
+          "select_label": "Which command do you fire?",
+          "steps": {
+            "select": "Intent",
+            "run": "Pipeline",
+            "review": "Response",
+            "done": "OK"
+          },
+          "choices": {
+            "create": "Create order",
+            "query": "Query",
+            "retry": "Reprocess"
+          },
+          "review_title": "BFF response",
+          "review_hint": "In the real system this comes back as JSON, correlation-id in the header.",
+          "confirm": "Accept response",
+          "done_title": "Command accepted",
+          "done_hint": "The worker already picked up the message.",
+          "field_labels": {
+            "trace": "Trace",
+            "queue": "Queue",
+            "status": "Status",
+            "latency": "Latency"
+          },
+          "logs": {
+            "create": [
+              "Gateway received POST /orders",
+              "BFF validated the JWT with Keycloak",
+              "Command published to orders.created",
+              "Worker persisted the order"
+            ],
+            "query": [
+              "GET /orders/1842 at the gateway",
+              "BFF authorized the read",
+              "RPC on orders.query",
+              "Worker returned the snapshot"
+            ],
+            "retry": [
+              "POST /orders/1842/retry",
+              "BFF rejected a duplicate and re-emitted",
+              "Message on orders.retry",
+              "Worker replayed the outbox"
+            ]
+          },
+          "sample": {
+            "create": {
+              "trace": "trc-9f2a",
+              "queue": "orders.created",
+              "status": "accepted",
+              "latency": "42 ms"
+            },
+            "query": {
+              "trace": "trc-1c88",
+              "queue": "orders.query",
+              "status": "found",
+              "latency": "19 ms"
+            },
+            "retry": {
+              "trace": "trc-77b0",
+              "queue": "orders.retry",
+              "status": "requeued",
+              "latency": "31 ms"
+            }
+          },
+          "hops": {
+            "spa": "SPA",
+            "gateway": "Gateway",
+            "bff": "BFF",
+            "queue": "RabbitMQ",
+            "worker": "Worker"
+          },
+          "hop_status": {
+            "idle": "idle",
+            "active": "in flight",
+            "ok": "ok",
+            "fail": "timeout"
+          },
+          "inject_fail": "Simulate worker timeout",
+          "fail_title": "Worker did not respond",
+          "fail_hint": "The message went to the DLQ. Requeue it to continue the path.",
+          "retry": "Requeue message",
+          "copy_trace": "Copy correlation-id",
+          "copied": "Copied"
+        },
+        "sim_hint": "Fire a command and watch SPA → gateway → BFF → RabbitMQ → worker. Inject a timeout if you want.",
+        "bff": {
+          "hint": "Dispatch as the Spring Boot BFF would: JWT, RBAC, RabbitMQ rpcCall, then the envelope.",
+          "title": "BFF · resource server",
+          "incoming": "Incoming HTTP",
+          "dispatch": "Dispatch to BFF",
+          "worker_label": "Worker / RPC",
+          "jwt": {
+            "valid": "Valid token",
+            "expired": "Expired token"
+          },
+          "roles": {
+            "write": "orders.write",
+            "read": "orders.read",
+            "none": "no role"
+          },
+          "worker": {
+            "ok": "Reply OK",
+            "timeout": "RPC timeout"
+          },
+          "steps": {
+            "request": "HTTP",
+            "auth": "Auth",
+            "rpc": "RPC",
+            "envelope": "Envelope"
+          },
+          "stages": {
+            "http": "HttpServletRequest",
+            "jwt": "JwtDecoder / JWK",
+            "rbac": "MethodSecurity",
+            "rpc": "RabbitTemplate rpcCall",
+            "reply": "ResponseEntity"
+          },
+          "stage_status": {
+            "idle": "idle",
+            "active": "running",
+            "ok": "pass",
+            "fail": "fail"
+          },
+          "logs": {
+            "http": "Received {route}",
+            "jwt_valid": "JwtDecoder: signature + exp OK (Keycloak JWK)",
+            "jwt_expired": "JwtDecoder: exp in the past → 401",
+            "rbac_write": "hasAuthority('orders.write')",
+            "rbac_read": "hasAuthority('orders.read')",
+            "rbac_none": "AccessDeniedException",
+            "rpc": "RabbitTemplate.convertSendAndReceive({queue})",
+            "reply_accepted": "202 Accepted · correlation-id in header",
+            "reply_timeout": "504 · message routed to DLQ"
+          }
+        }
+      },
+      "support": {
+        "name": "Support console",
+        "client": "Confidential client",
+        "description": "Internal tool for the support team: classify the request, look for a fast fix, and open a tracked protocol. Built to shorten the path from chat to the team that owns the incident.",
+        "how": {
+          "intake": {
+            "title": "Request comes in",
+            "body": "Chat or phone. The analyst logs the story without dropping context."
+          },
+          "classify": {
+            "title": "Classification",
+            "body": "Priority and queue come from simple rules — access, billing, outage."
+          },
+          "solve": {
+            "title": "Fix or escalate",
+            "body": "The internal base suggests a step; if that fails, it hands off in writing."
+          },
+          "protocol": {
+            "title": "Protocol",
+            "body": "Everything is tied to a traceable number so the history does not vanish."
+          }
+        },
+        "sim": {
+          "title": "Support queue",
+          "aria": "Walkthrough of the internal support console",
+          "select_label": "Which ticket just landed?",
+          "steps": {
+            "select": "Ticket",
+            "run": "Triage",
+            "review": "Handoff",
+            "done": "Protocol"
+          },
+          "choices": {
+            "access": "Access",
+            "billing": "Billing",
+            "outage": "Outage"
+          },
+          "review_title": "Ready to open a protocol",
+          "review_hint": "In the real system the analyst can still edit the note before saving.",
+          "confirm": "Open protocol",
+          "done_title": "Protocol opened",
+          "done_hint": "The owning team already has the ticket.",
+          "field_labels": {
+            "ticket": "Ticket",
+            "priority": "Priority",
+            "owner": "Queue",
+            "protocol": "Protocol"
+          },
+          "logs": {
+            "access": [
+              "Report: user cannot open a module",
+              "Classified as access",
+              "Suggested article: permission reset",
+              "Queue: identity"
+            ],
+            "billing": [
+              "Report: duplicate invoice",
+              "Classified as billing",
+              "Suggestion: check the period in the ERP",
+              "Queue: finance"
+            ],
+            "outage": [
+              "Report: blank screen after login",
+              "Classified as outage",
+              "Suggestion: check gateway status",
+              "Queue: platform"
+            ]
+          },
+          "sample": {
+            "access": {
+              "ticket": "#4821",
+              "priority": "Medium",
+              "owner": "Identity",
+              "protocol": "PRT-10492"
+            },
+            "billing": {
+              "ticket": "#4822",
+              "priority": "Low",
+              "owner": "Finance",
+              "protocol": "PRT-10493"
+            },
+            "outage": {
+              "ticket": "#4823",
+              "priority": "High",
+              "owner": "Platform",
+              "protocol": "PRT-10494"
+            }
+          },
+          "stories": {
+            "access": "User cannot open the billing module after the last deploy. Session looks valid.",
+            "billing": "Client received two invoices for the same period. Wants the duplicate cancelled.",
+            "outage": "Blank screen after login for several desks. Gateway health is unknown."
+          },
+          "priority_label": "Priority",
+          "queue_label": "Queue",
+          "continue": "Continue to note",
+          "back": "Back to triage",
+          "note_label": "Handoff note",
+          "note_placeholder": "What was tried, and what the owning team should know…",
+          "priorities": {
+            "low": "Low",
+            "medium": "Medium",
+            "high": "High"
+          },
+          "queues": {
+            "identity": "Identity",
+            "finance": "Finance",
+            "platform": "Platform"
+          }
+        }
+      },
+      "pwa": {
+        "name": "Operations PWA",
+        "client": "Confidential client",
+        "description": "A Vue progressive web app for counter operations. It works offline, queues actions on the device, and syncs when the network is back — without dropping a sale or a stock move.",
+        "how": {
+          "install": {
+            "title": "Installs on the device",
+            "body": "It opens as an app. The service worker keeps the shell and recent data."
+          },
+          "offline": {
+            "title": "Works offline",
+            "body": "Sales, stock moves and close-out go into a local queue."
+          },
+          "queue": {
+            "title": "On-device queue",
+            "body": "IndexedDB holds the intent until the network is stable."
+          },
+          "sync": {
+            "title": "Syncs",
+            "body": "When connectivity returns, it replays in order against the BFF."
+          }
+        },
+        "sim": {
+          "title": "Offline mode",
+          "aria": "Walkthrough of the operations PWA offline and sync",
+          "select_label": "What happens at the counter?",
+          "steps": {
+            "select": "Action",
+            "run": "Local",
+            "review": "Queue",
+            "done": "Sync"
+          },
+          "choices": {
+            "sale": "Sale",
+            "stock": "Stock",
+            "close": "Close-out"
+          },
+          "review_title": "Local queue",
+          "review_hint": "No network. Nothing has been sent yet.",
+          "confirm": "Come back online",
+          "done_title": "Synced",
+          "done_hint": "{n} intent(s) confirmed by the BFF.",
+          "field_labels": {
+            "device": "Device",
+            "mode": "Mode",
+            "pending": "Pending",
+            "synced": "Sync"
+          },
+          "logs": {
+            "sale": [
+              "Service worker: shell cached",
+              "Sale written to IndexedDB",
+              "Local queue: 1 intent",
+              "Offline — waiting"
+            ],
+            "stock": [
+              "Local stock move",
+              "Conflict avoided with a document version",
+              "Local queue: 2 intents",
+              "Offline — waiting"
+            ],
+            "close": [
+              "Close-out started",
+              "Totals checked on the device",
+              "Local queue: 3 intents",
+              "Offline — waiting"
+            ]
+          },
+          "sample": {
+            "sale": {
+              "device": "Tablet-04",
+              "mode": "Offline",
+              "pending": "1 sale",
+              "synced": "Pending"
+            },
+            "stock": {
+              "device": "Tablet-04",
+              "mode": "Offline",
+              "pending": "2 moves",
+              "synced": "Pending"
+            },
+            "close": {
+              "device": "Tablet-04",
+              "mode": "Offline",
+              "pending": "3 items",
+              "synced": "Pending"
+            }
+          },
+          "online": "Online",
+          "offline": "Offline",
+          "device": "Device",
+          "pending_count": "pending",
+          "queue_title": "On-device queue",
+          "queue_empty": "No intents yet. Register a sale, stock move or close-out.",
+          "item_status": {
+            "queued": "Queued",
+            "syncing": "Syncing",
+            "synced": "Synced",
+            "conflict": "Conflict"
+          },
+          "resolve": "Keep local version",
+          "sync": "Sync with BFF",
+          "offline_hint": "Come back online to replay the queue against the BFF."
+        },
+        "sim_hint": "Work offline, queue several intents, then come back online and sync with the BFF.",
+        "bff": {
+          "hint": "The BFF receives the offline queue: JWT, idempotency, apply in order, 409 on version conflict.",
+          "title": "BFF · replay",
+          "batch": "Replay batch",
+          "dispatch": "POST replay",
+          "jwt": {
+            "valid": "Valid token",
+            "expired": "Expired token"
+          },
+          "steps": {
+            "request": "HTTP",
+            "auth": "Auth",
+            "apply": "Apply",
+            "envelope": "Envelope"
+          },
+          "logs": {
+            "receive": "Received {n} intent(s) on /v1/ops/replay",
+            "jwt_valid": "JwtDecoder: token OK",
+            "jwt_expired": "JwtDecoder: expired → 401",
+            "apply_sale": "Applying SALE · idempotency-key ok",
+            "apply_stock": "Applying STOCK · version check",
+            "apply_close": "Applying CLOSE · expected version",
+            "result_ok": "{intent}: persisted",
+            "result_conflict": "{intent}: 409 version conflict"
+          },
+          "item_status": {
+            "idle": "queued",
+            "active": "applying",
+            "ok": "ok",
+            "conflict": "conflict",
+            "rejected": "rejected"
+          },
+          "status": {
+            "200": "Replay accepted",
+            "401": "Unauthorized",
+            "409": "Conflict on close-out"
+          }
+        }
+      }
+    },
+    "views": {
+      "front": "Front",
+      "bff": "BFF"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "From university to full-stack work — support, product, and the stack I use today.",
+    "now": "Now",
+    "location": "Curitiba, Paraná, Brazil",
+    "month_year": "{month} {year}",
+    "range": "{start} – {end}",
+    "range_present": "{start} – present",
+    "n_years": "{n} year | {n} years",
+    "n_months": "{n} month | {n} months",
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "types": {
+      "contract": "Contract",
+      "fulltime": "Full-time",
+      "internship": "Internship",
+      "education": "Education"
+    },
+    "modes": {
+      "hybrid": "Hybrid",
+      "remote": "Remote"
+    },
+    "companies": {
+      "saastec": "SaaSTec Labs",
+      "korp": "Korp ERP | by Viasoft",
+      "education": "Bachelor's studies"
+    },
+    "roles": {
+      "fullstack": {
+        "title": "Full-stack developer",
+        "summary": "Full-stack developer focused on Vue.js (PWAs) and Spring Boot in an event-driven microservice architecture with RabbitMQ. Experience with a BFF, Keycloak authentication, secret management with Vault, and persistence in PostgreSQL (DBeaver). Monitoring and observability with Prometheus and Grafana. Version control with Git and CI/CD pipelines on Jenkins."
+      },
+      "korpSenior": {
+        "title": "Senior support analyst",
+        "summary": "Worked as a support analyst handling customers over chat and phone — identifying the request quickly, looking for an immediate fix, and ranking priority. Escalated incidents to the right team with written handoff and ticket traceability."
+      },
+      "saastecSenior": {
+        "title": "Senior support analyst",
+        "summary": "After being hired full-time, I kept supporting customers over chat and phone, spotting requests quickly and documenting incident handoff. In parallel, I started contributing part-time to the company's applications, outside the support queue."
+      },
+      "saastecJunior": {
+        "title": "Junior support analyst",
+        "summary": "Internship mixing customer support and development. On support, I handled chat and phone, identified requests quickly, and documented incident handoff. As a developer, I built internal tools to speed up the support workflow."
+      },
+      "degree": {
+        "title": "University",
+        "summary": "Started the degree in April 2021 and finished in June 2023, overlapping with the internship at SaaSTec Labs."
+      }
+    },
+    "skill": {
+      "vue": "Vue.js",
+      "spring": "Spring Boot",
+      "rabbitmq": "RabbitMQ",
+      "keycloak": "Keycloak",
+      "vault": "Vault",
+      "postgres": "PostgreSQL",
+      "prometheus": "Prometheus",
+      "grafana": "Grafana",
+      "git": "Git",
+      "jenkins": "Jenkins",
+      "data": "Data analysis",
+      "systems": "Systems analysis",
+      "customer": "Customer support",
+      "incidents": "Incident management",
+      "chat": "Chat",
+      "phone": "Phone",
+      "dev": "Development",
+      "internal": "Internal tools"
+    }
+  },
+  "contact": {
+    "title": "Let's talk",
+    "subtitle": "Open to full-stack roles, architecture conversations, and collaborations. Email is the preferred channel for professional opportunities.",
+    "availability": "Available for new opportunities",
+    "location": "Curitiba, Paraná, Brazil",
+    "response": "Typical reply within 48 hours",
+    "cta_email": "Write an email",
+    "copy": "Copy email",
+    "copied": "Email copied",
+    "preferred": "Preferred",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email_hint": "Preferred channel for opportunities, proposals, and professional conversations.",
+    "linkedin_hint": "Professional profile, experience, and recommendations.",
+    "github_hint": "Repositories, case studies, and public code.",
+    "open_linkedin": "View LinkedIn profile",
+    "open_github": "View GitHub repositories",
+    "mail_subject": "Opportunity — Mateus Matyak"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built_with": "Built with Vue 3, TypeScript & Vite"
+  },
+  "actions": {
+    "toggle_theme": "Toggle theme",
+    "change_language": "Change language"
+  }
+}

@@ -1,0 +1,1204 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "architecture": "Arquitectura",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto",
+    "menu": "Abrir menú",
+    "primary": "Principal"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "name": "Mateus Matyak",
+    "role": "Desarrollador Full-Stack",
+    "tagline": "Diseño y construyo ecosistemas de microservicios seguros y orientados a eventos, desde frontends en Vue.js hasta backends en Spring Boot.",
+    "availability": "Disponible para nuevas oportunidades",
+    "about_cta": "Sobre mí. Haz clic para leer",
+    "about_title": "Sobre mí",
+    "cta_projects": "Ver proyectos",
+    "cta_contact": "Contactar"
+  },
+  "about": {
+    "body": "Soy un desarrollador full-stack enfocado en sistemas distribuidos. En el día a día, diseño arquitecturas de microservicios en las que un frontend en Vue.js se comunica con un BFF en Spring Boot, que autentica a través de Keycloak y coordina los servicios de backend de forma asíncrona por RabbitMQ.\n\nToda credencial se gestiona de forma centralizada con Vault. Nada hardcodeado, nada expuesto en el código. Me importan los sistemas seguros por defecto, observables en producción y construidos para escalar horizontalmente sin drama.\n\nYa sea un árbol de componentes Vue 3 o un contrato de mensaje entre servicios, cuido los detalles que mantienen un sistema aburrido de la mejor manera: predecible, resiliente y fácil de razonar."
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "La misma stack de los dos flujos: Vue 3 hasta el BFF, workers en RabbitMQ, PostgreSQL por servicio. Git Flow, Jenkins y OKE del otro lado.",
+    "tech_guide_cta": "Ver qué hace realmente cada una",
+    "carousel_prev": "Categoría anterior",
+    "carousel_next": "Siguiente categoría",
+    "categories": {
+      "frontend": {
+        "title": "Frontend",
+        "subtitle": "Una SPA en Vue 3. Token en Pinia, PKCE contra Keycloak. Toda intención HTTP pasa por el gateway: el worker no tiene superficie web."
+      },
+      "backend": {
+        "title": "Backend y mensajería",
+        "subtitle": "HTTP en el BFF, ninguno en el worker. OpenAPI en el BFF; RPC en RabbitMQ, contrato en la misma entrega que la cola."
+      },
+      "data": {
+        "title": "Datos",
+        "subtitle": "Cada worker es dueño de su esquema PostgreSQL. Sin FK entre servicios; leer otro contexto pasa por RPC."
+      },
+      "security": {
+        "title": "Seguridad e identidad",
+        "subtitle": "Keycloak emite el JWT, el BFF autoriza, Vault inyecta en runtime. Redis limita la tasa en el gateway por IP del peer."
+      },
+      "observability": {
+        "title": "Observabilidad",
+        "subtitle": "Grafana orquesta Prometheus y Loki. Métricas y logs en el mismo dashboard, correlacionados por correlation-id."
+      },
+      "testing": {
+        "title": "Pruebas y calidad",
+        "subtitle": "JUnit para la lógica de dominio, node:test en el front, ArchUnit en el perfil del worker. Sonar es la puerta: una violación nueva no pasa."
+      },
+      "devops": {
+        "title": "DevOps y CI/CD",
+        "subtitle": "Git Flow sin master de aplicación. Jenkins lee el prefijo; Docker es el mismo artefacto; OKE aísla staging y producción."
+      }
+    }
+  },
+  "techGuide": {
+    "back_cta": "Volver a Habilidades",
+    "title": "Para qué sirve realmente cada pieza",
+    "intro": "Cada herramienta de abajo gana su lugar por dos razones: lo que hace por el sistema mientras lo construyo, y en qué se convierte cuando alguien realmente lo usa. Esta es esa conexión, explicada.",
+    "dev_label": "En desarrollo",
+    "impact_label": "Para el usuario",
+    "items": {
+      "vue": {
+        "dev": "SPA. Autentica con PKCE, guarda el token en Pinia y nunca llama a un worker.",
+        "impact": "Las páginas se sienten instantáneas y fluidas. Las interacciones responden de inmediato, sin recargas completas."
+      },
+      "typescript": {
+        "dev": "Detecta errores de tipo antes de que salgan a producción, en toda la base de código.",
+        "impact": "Llegan menos bugs a producción, lo que significa una app más estable y predecible en el día a día."
+      },
+      "vite": {
+        "dev": "Compila y empaqueta la app con hot reload casi instantáneo durante el desarrollo.",
+        "impact": "Tiempos de carga más rápidos, gracias a bundles optimizados y mínimos enviados al navegador."
+      },
+      "primevue": {
+        "dev": "El design system de la SPA. Patrones de UI listos, sin reconstruir botones y formularios en cada pantalla.",
+        "impact": "Interacciones consistentes y pulidas. Botones, formularios y menús se comportan como se espera."
+      },
+      "vuerouter": {
+        "dev": "Navegación de la SPA. Cada página solo descarga su código cuando la ruta lo pide.",
+        "impact": "Las páginas cargan más rápido, porque el navegador solo descarga lo que la vista actual necesita."
+      },
+      "pinia": {
+        "dev": "El token vive aquí. La sesión del front no se filtra al worker.",
+        "impact": "Las acciones se mantienen sincronizadas en toda la app. Sin pantallas desactualizadas ni en conflicto."
+      },
+      "junit": {
+        "dev": "Lógica pura contra objetos reales. Sin mocks de negocio, sin getters triviales, sin testear Spring en sí.",
+        "impact": "La regla que disparan ya se ejercitó en el recorte que importa, no en el framework."
+      },
+      "nodetest": {
+        "dev": "El front se prueba en el propio Node. Un runtime, un test: la cobertura sale de aquí, no de un runner paralelo.",
+        "impact": "Lo que la pantalla calcula es el mismo contrato que el pipeline mide. Sin sorpresas en el recorrido."
+      },
+      "archunit": {
+        "dev": "El perfil del worker es un test. Cambiar la regla implica cambiar todos los workers en la misma entrega.",
+        "impact": "Un servicio no gana HTTP ni JDBC por accidente. El recorte de responsabilidad se mantiene."
+      },
+      "eslint": {
+        "dev": "El listón que el gate va a exigir ya falla en el editor. Sin esperar al pipeline para enterarse.",
+        "impact": "Pasan menos bugs sutiles, porque el código llega al gate ya en el mismo listón."
+      },
+      "sonar": {
+        "dev": "Gate por defecto en develop y feature/*. Cero violaciones nuevas, cobertura nueva ≥80. Sin bypass.",
+        "impact": "Lo que se publica ya cumplió un listón fijo. Nadie lo relaja el día del deploy."
+      },
+      "springboot": {
+        "dev": "HTTP en el BFF, ninguno en el worker. La entrega incluye el test; compilar solo no basta.",
+        "impact": "Las solicitudes se atienden de forma fiable, incluso cuando el tráfico real se dispara."
+      },
+      "rabbitmq": {
+        "dev": "Una routing key nueva nace con su contrato. Springwolf y el test llegan en la misma entrega que la cola.",
+        "impact": "Las acciones se completan aunque un servicio esté momentáneamente lento. Nada falla en silencio."
+      },
+      "openapi": {
+        "dev": "Contrato HTTP en el BFF, versionado con el código. Sin wiki paralela.",
+        "impact": "Lo que la pantalla llama es el mismo contrato que el servicio expone."
+      },
+      "postgresql": {
+        "dev": "Cada worker escribe solo en sus propias tablas. Sin FK física entre servicios.",
+        "impact": "Sus pedidos, perfiles e historial se mantienen precisos y nunca quedan a medias."
+      },
+      "keycloak": {
+        "dev": "Centraliza login, tokens y permisos en lugar de construir autenticación desde cero en cada servicio.",
+        "impact": "Una cuenta, un login. El acceso se mantiene seguro sin fricción extra en el camino."
+      },
+      "openid": {
+        "dev": "Estandariza cómo el frontend, el BFF y los servicios confían en el mismo token de identidad.",
+        "impact": "Su sesión se mantiene válida y segura en toda la app, no solo en una página."
+      },
+      "vault": {
+        "dev": "Inyecta cada credencial en runtime. El mismo application.yml se usa en todos los entornos.",
+        "impact": "Sus datos están protegidos por una infraestructura que nunca se expuso en un repositorio filtrado."
+      },
+      "redis": {
+        "dev": "Rate-limit en el gateway. La clave es la IP del peer, no un header que el cliente inventa.",
+        "impact": "El abuso se detiene en el borde, sin penalizar una solicitud legítima en el BFF."
+      },
+      "grafana": {
+        "dev": "Métricas y logs en el mismo dashboard, correlacionados por correlation-id.",
+        "impact": "El problema aparece como alerta antes de convertirse en ticket."
+      },
+      "prometheus": {
+        "dev": "Scrape en el BFF, push en el worker. Sin superficie HTTP de health en el worker.",
+        "impact": "Latencia y errores llegan a Grafana sin abrir una superficie extra."
+      },
+      "loki": {
+        "dev": "Logs JSON con correlation-id. Sin contraseñas, JWT ni identificadores fiscales en el log.",
+        "impact": "Se puede seguir una solicitud sin filtrar lo que no debe filtrarse."
+      },
+      "docker": {
+        "dev": "El job pasa MODE. Mismo Dockerfile, mismo artefacto; cambia el destino, no la receta.",
+        "impact": "Lo que se testeó es exactamente lo que reciben. Sin sorpresas específicas del entorno."
+      },
+      "jenkins": {
+        "dev": "El prefijo de la rama es el contrato. develop va a staging; feature/* solo valida; release/* espera confirmación antes de producción.",
+        "impact": "Staging y producción no se mezclan. Lo que ven ya pasó por el entorno real."
+      },
+      "git": {
+        "dev": "Feature y hotfix desde develop. Un release es un corte: sin commits nuevos, sin master de aplicación. Un PR, una entrega.",
+        "impact": "Cada cambio que les llega vino de un recorte revisable, no de una rama eterna."
+      },
+      "kubernetes": {
+        "dev": "OKE. Staging y producción, cada uno en su propio compartment. Mismo camino, cuota distinta.",
+        "impact": "Lo que se validó en prueba se publica con la misma forma, aislado, con más CPU."
+      }
+    }
+  },
+  "architecture": {
+    "intro": {
+      "title": "Arquitectura",
+      "subtitle": "Dos vistas de cómo trabajo: el flujo del día a día y la arquitectura que diseño para los sistemas."
+    },
+    "title": "Cómo arquitecto las aplicaciones",
+    "subtitle": "El frontend habla con el gateway, el BFF autentica y publica RPC en RabbitMQ, y los workers persisten en PostgreSQL. Sin JDBC en el BFF, sin HTTP en los workers.",
+    "diagram": {
+      "caption": "El usuario autentica con Keycloak (PKCE). El gateway enruta, limita la tasa e inyecta un correlation-id; el BFF valida el JWT, autoriza por rol y publica un RPC en RabbitMQ. El worker escucha sin superficie HTTP, aplica la regla de negocio y persiste en el esquema del que es dueño. Vault inyecta secretos en runtime. Grafana orquesta Prometheus y Loki: scrape y push de métricas, logs JSON, dashboards y alertas en un solo lugar.",
+      "groups": {
+        "http": "HTTP",
+        "persistence": "Persistencia"
+      },
+      "nodes": {
+        "client": {
+          "title": "Frontend",
+          "subtitle": "Vue 3 · PKCE"
+        },
+        "gateway": {
+          "title": "API Gateway",
+          "subtitle": "TLS · rate-limit"
+        },
+        "bff": {
+          "title": "BFF",
+          "subtitle": "El mensajero HTTP"
+        },
+        "oauth": {
+          "title": "OAuth2 JWT",
+          "subtitle": "Resource server"
+        },
+        "openapi": {
+          "title": "OpenAPI",
+          "subtitle": "SpringDoc"
+        },
+        "rbac": {
+          "title": "RBAC",
+          "subtitle": "Roles de Keycloak"
+        },
+        "validation": {
+          "title": "Validación",
+          "subtitle": "Bean Validation"
+        },
+        "queue": {
+          "title": "RabbitMQ",
+          "subtitle": "RPC · DLQ"
+        },
+        "services": {
+          "title": "Workers",
+          "subtitle": "Sin HTTP"
+        },
+        "amqp": {
+          "title": "AMQP listener",
+          "subtitle": "rpcCall"
+        },
+        "springwolf": {
+          "title": "Springwolf",
+          "subtitle": "Contrato AMQP"
+        },
+        "jpa": {
+          "title": "JPA",
+          "subtitle": "Esquema propio"
+        },
+        "cache": {
+          "title": "Caffeine",
+          "subtitle": "Caché local"
+        },
+        "auth": {
+          "title": "Keycloak",
+          "subtitle": "Login · JWT"
+        },
+        "vault": {
+          "title": "Vault",
+          "subtitle": "Secretos"
+        },
+        "redis": {
+          "title": "Redis",
+          "subtitle": "Rate-limit"
+        },
+        "db": {
+          "title": "PostgreSQL",
+          "subtitle": "Base de datos"
+        },
+        "prometheus": {
+          "title": "Prometheus",
+          "subtitle": "Métricas"
+        },
+        "loki": {
+          "title": "Loki",
+          "subtitle": "Logs JSON"
+        },
+        "grafana": {
+          "title": "Grafana",
+          "subtitle": "Dashboards"
+        },
+        "dbeaver": {
+          "title": "DBeaver",
+          "subtitle": "Cliente SQL"
+        }
+      },
+      "edges": {
+        "login": "PKCE",
+        "request": "HTTPS",
+        "strip": "/v1",
+        "publish": "RPC",
+        "consume": "consume",
+        "persist": "persiste",
+        "validate": "valida JWT",
+        "secrets": "secretos",
+        "ratelimit": "rate-limit",
+        "scrape": "/metrics",
+        "logs": "logs",
+        "manage": "gestiona"
+      }
+    },
+    "learn_more": "Más información sobre",
+    "details": {
+      "client": "La SPA en Vue 3. Autentica con PKCE contra Keycloak, guarda el token en Pinia y nunca llama a un worker de forma directa. Toda intención HTTP pasa por el gateway y llega al BFF.",
+      "gateway": "Enrutamiento, TLS, rate-limiting y correlation-id. Sin reglas de negocio ni transformación de payload. Reenvía /api/... del cliente a /v1/... en el BFF.",
+      "bff": "La única superficie HTTP del dominio. Valida el JWT, autoriza por rol, moldea la respuesta para la UI y publica el trabajo en RabbitMQ. Sin JDBC, sin llamadas HTTP a workers.",
+      "oauth": "El BFF es un resource server OAuth2. Verifica el JWT contra el JWK de Keycloak en cada llamada; el gateway no es dueño de la identidad.",
+      "openapi": "SpringDoc en el BFF. El contrato HTTP vive y se versiona con el código, no en una wiki paralela.",
+      "rbac": "Toda API de dominio autoriza por el rol de Keycloak del cliente del front. El frontend solo oculta lo que la UX necesita; la regla se aplica en el BFF.",
+      "validation": "Bean Validation en el BFF. Un error de campo se convierte en un 400 tipado; una falla técnica nunca filtra stack, SQL ni nombre de cola en el cuerpo HTTP.",
+      "queue": "RPC síncrono sobre RabbitMQ. Éxito y error de dominio vuelven en el envelope; timeout y DLQ se convierten en falla técnica. Exchange y routing key por servicio.",
+      "services": "Workers Spring Boot sin HTTP. Cada uno escucha sus propias colas, aplica la regla de negocio y persiste en su propio ritmo de deploy. Sin starter-web.",
+      "amqp": "El AMQP listener es el punto de entrada del worker. El BFF solo publica a través de rpcCall; el worker nunca devuelve una entidad JPA cruda en el envelope.",
+      "springwolf": "El contrato AMQP se documenta en el propio worker. Toda cola nueva nace con su contrato en la misma entrega.",
+      "jpa": "Cada worker es dueño de su esquema PostgreSQL. Sin FK física entre servicios; leer datos de otro bounded context pasa por RPC.",
+      "cache": "Caffeine en el worker para datos locales de corta vida. No reemplaza la base de datos y no filtra datos de otro servicio.",
+      "db": "El sistema de registro. Cada servicio escribe solo en sus propias tablas, a través de JPA/Hibernate, con ddl-auto en validate fuera de desarrollo.",
+      "auth": "El proveedor de identidad. Pantalla de login, tokens OIDC de vida corta y la fuente de los roles que el BFF convierte en autorización.",
+      "vault": "El único lugar donde viven las credenciales. El mismo application.yml se usa en todos los entornos; Vault inyecta RMQ, base de datos, JWT y el resto en runtime.",
+      "redis": "Rate-limiting y apoyo del gateway. La clave es la IP del peer, no un header que el cliente pueda inventar.",
+      "prometheus": "En el BFF, scrape de Actuator. En los workers, las métricas se envían por push, sin superficie HTTP de health. Latencia y errores llegan a Grafana antes de que los usuarios lo noten.",
+      "loki": "Logs JSON con correlation-id, userId y nivel. Grafana consulta Loki; sin contraseñas, JWT, identificadores fiscales ni payloads de proveedor en el log.",
+      "grafana": "La capa de observabilidad. Grafana orquesta Prometheus y Loki: métricas y logs en el mismo dashboard, correlacionados por correlation-id, con alertas a partir de lo que ambos recolectan.",
+      "dbeaver": "El cliente SQL que uso para inspeccionar esquemas, ejecutar consultas ad hoc y depurar datos fuera de la aplicación."
+    },
+    "footnote": "BFF, workers y frontend se publican containerizados con Docker. El mismo artefacto se usa en staging y producción; lo que cambia es el destino y los secretos de Vault.",
+    "workflow": {
+      "title": "Cómo desarrollo",
+      "subtitle": "Entrega con quality gate para sistemas que no pueden romper la operación: una rama desde develop, staging, QA y luego un release a producción.",
+      "caption": "Todo cambio nace en una rama feature/* o hotfix/* cortada desde develop, y solo entra después de la revisión de código. En el Jenkins on-prem, un scan inicia el pipeline multibranch; el contrato es el prefijo de la rama: develop va a staging, release/<version> va a producción. El pipeline de staging ejecuta checkout, instalación de herramientas, pruebas (UT y SAST), Sonar Quality Gate, build de staging y deploy de preproducción. El deploy recrea la instancia y vuelve a asociar la IP reservada, de modo que DNS y el load balancer conservan la misma dirección. Staging y producción repiten el mismo camino en OCI — DNS, load balancer, Ingress, OKE, Docker y JVM — cada uno en su propio compartment, con DNS y load balancers separados. Con develop en staging, QA primero cubre los flujos básicos de mayor impacto operacional, independientemente de si el cambio fue un hotfix o una feature, y luego valida el cambio en sí: que un hotfix realmente corrigió el error, o que una feature se implementó y se comporta como debe.",
+      "groups": {
+        "homologation": "Staging",
+        "qaChange": "Validación del cambio",
+        "production": "Producción"
+      },
+      "nodes": {
+        "develop": {
+          "title": "Develop",
+          "subtitle": "Aplicación completa"
+        },
+        "feature": {
+          "title": "feature/*",
+          "subtitle": "Nueva funcionalidad"
+        },
+        "hotfix": {
+          "title": "hotfix/*",
+          "subtitle": "Corrección de error"
+        },
+        "developMerge": {
+          "title": "Develop",
+          "subtitle": "Merge revisado"
+        },
+        "review": {
+          "title": "Code Review",
+          "subtitle": "Pull Request"
+        },
+        "jenkins": {
+          "title": "Jenkins",
+          "subtitle": "Scan · staging"
+        },
+        "checkout": {
+          "title": "Checkout",
+          "subtitle": "Código de la rama"
+        },
+        "tools": {
+          "title": "Tool install",
+          "subtitle": "Herramientas"
+        },
+        "test": {
+          "title": "Test · UT · SAST",
+          "subtitle": "Etapa 1"
+        },
+        "sonar": {
+          "title": "Sonar QG",
+          "subtitle": "Etapa 2"
+        },
+        "buildStaging": {
+          "title": "Build staging",
+          "subtitle": "Etapa 3"
+        },
+        "deployPre": {
+          "title": "Deploy pre-prod",
+          "subtitle": "IP reservada"
+        },
+        "staging": {
+          "title": "Staging",
+          "subtitle": "Compartment OCI"
+        },
+        "dnsHomolog": {
+          "title": "DNS · test",
+          "subtitle": "OCI DNS"
+        },
+        "lbHomolog": {
+          "title": "Load balancer",
+          "subtitle": "HTTPS · SSL"
+        },
+        "ingressHomolog": {
+          "title": "Ingress",
+          "subtitle": "Ruta → servicio"
+        },
+        "okeHomolog": {
+          "title": "OKE · 256MB",
+          "subtitle": "0.5 CPU"
+        },
+        "dockerHomolog": {
+          "title": "Docker",
+          "subtitle": "Mismo artefacto"
+        },
+        "jvmHomolog": {
+          "title": "JVM",
+          "subtitle": "Spring Boot"
+        },
+        "qa": {
+          "title": "QA",
+          "subtitle": "Validación"
+        },
+        "qaBasic": {
+          "title": "Pruebas básicas",
+          "subtitle": "Mayor impacto operacional"
+        },
+        "qaFeature": {
+          "title": "Feature verificada",
+          "subtitle": "Se comporta como se espera"
+        },
+        "qaHotfix": {
+          "title": "Hotfix verificado",
+          "subtitle": "Error resuelto"
+        },
+        "release": {
+          "title": "release/<version>",
+          "subtitle": "Destino de producción"
+        },
+        "jenkinsProd": {
+          "title": "Jenkins",
+          "subtitle": "Scan · producción"
+        },
+        "checkoutProd": {
+          "title": "Checkout",
+          "subtitle": "Código de la rama"
+        },
+        "toolsProd": {
+          "title": "Tool install",
+          "subtitle": "Herramientas"
+        },
+        "testProd": {
+          "title": "Test · UT · SAST",
+          "subtitle": "Etapa 1"
+        },
+        "sonarProd": {
+          "title": "Input · tag",
+          "subtitle": "Confirmación"
+        },
+        "buildProd": {
+          "title": "Build producción",
+          "subtitle": "Etapa 3"
+        },
+        "deployProd": {
+          "title": "Deploy de producción",
+          "subtitle": "IP reservada"
+        },
+        "production": {
+          "title": "Producción",
+          "subtitle": "Compartment OCI"
+        },
+        "dnsProd": {
+          "title": "DNS · prod",
+          "subtitle": "OCI DNS"
+        },
+        "lbProd": {
+          "title": "Load balancer",
+          "subtitle": "HTTPS · SSL"
+        },
+        "ingressProd": {
+          "title": "Ingress",
+          "subtitle": "Ruta → servicio"
+        },
+        "okeProd": {
+          "title": "OKE · autoscale",
+          "subtitle": "CPU · memoria"
+        },
+        "dockerProd": {
+          "title": "Docker",
+          "subtitle": "Mismo artefacto"
+        },
+        "jvmProd": {
+          "title": "JVM",
+          "subtitle": "Spring Boot"
+        }
+      },
+      "edges": {
+        "create": "crea rama",
+        "merge": "merge",
+        "approve": "revisión",
+        "scan": "scan",
+        "ready": "entorno listo",
+        "validate": "valida",
+        "release": "crea release",
+        "deploy": "deploy"
+      },
+      "details": {
+        "develop": "La rama que contiene la aplicación completa. Todo cambio parte de aquí.",
+        "feature": "Una rama de nueva funcionalidad, cortada desde develop. El prefijo feature/ deja explícito el tipo de cambio.",
+        "hotfix": "Una rama de corrección, cortada desde develop. El prefijo hotfix/ deja claro que es un arreglo, no una feature.",
+        "developMerge": "El merge a develop solo ocurre después de la revisión de código. Ese develop actualizado es lo que va a staging.",
+        "review": "Todo cambio pasa por code review antes de entrar en develop. Esa es la puerta humana antes del pipeline.",
+        "jenkins": "En el Jenkins on-prem, un scan inicia el pipeline multibranch. El contrato es el prefijo: develop va a staging; feature/*, hotfix/* y bugfix/* llegan al gate y se detienen ahí.",
+        "checkout": "Primera etapa del pipeline: extrae el código de la rama que se va a construir.",
+        "tools": "Instala las herramientas y dependencias que el resto del pipeline necesita para ejecutarse.",
+        "test": "Primera subetapa de staging. JUnit para la lógica de dominio, node:test en el front y luego SAST. Compilar sin tests no es una entrega.",
+        "sonar": "Segunda subetapa. Gate por defecto: cero violaciones nuevas, cobertura nueva ≥80. Si falla, el pipeline se detiene. Sin bypass.",
+        "buildStaging": "Tercera subetapa. Produce el artefacto de staging, listo para preproducción.",
+        "deployPre": "Cuarta subetapa. Recrea la instancia en el compartment de staging y asocia la IP reservada. DNS y el load balancer conservan la misma dirección; solo cambia el contenedor.",
+        "staging": "Compartment OCI de staging, aislado de producción. La solicitud llega al DNS de prueba, luego al load balancer, Ingress, OKE, contenedor y JVM: la misma secuencia que producción, con menos CPU y memoria. Este es el entorno que QA usa para validar el producto.",
+        "dnsHomolog": "Resuelve la URL de prueba a la IP pública del load balancer de este compartment. Nunca apunta al LB de producción.",
+        "lbHomolog": "Acepta HTTPS en 443, termina SSL y reenvía el tráfico a la red privada del compartment de staging. La IP pública es la dirección reservada que el deploy vuelve a asociar.",
+        "ingressHomolog": "Lee la ruta de la URL y elige el microservicio. Una ruta de API llega al BFF correcto dentro del clúster de staging.",
+        "okeHomolog": "OKE orquesta nodos y pods en este compartment. Los contenedores de staging están limitados — 0.5 CPU y 256MB — para no consumir hardware de producción.",
+        "dockerHomolog": "El mismo artefacto Docker del pipeline. Un entorno Linux idéntico al de producción, con una cuota menor de CPU y memoria.",
+        "jvmHomolog": "La JVM dentro del contenedor ejecuta Spring Boot, aplica la regla de negocio y envía la respuesta por el mismo camino.",
+        "qa": "QA interviene en staging después del deploy de preproducción. Primero cubren lo que no debe romperse y luego validan el cambio en sí.",
+        "qaBasic": "Pruebas de los flujos básicos de mayor impacto operacional. Siempre se ejecutan, haya sido el cambio un hotfix o una feature.",
+        "qaFeature": "Si el cambio vino de una rama feature/*, QA confirma que la funcionalidad se implementó y se comporta como debe.",
+        "qaHotfix": "Si el cambio vino de una rama hotfix/*, QA confirma que el error realmente se corrigió y no volvió.",
+        "release": "Una rama release/<version>, creada después de que QA da el visto bueno. Jenkins trata ese prefijo como un build destinado a producción.",
+        "jenkinsProd": "El mismo scan, ahora en release/<version>. El gate no se vuelve a ejecutar: el prefijo autoriza producción, con confirmación y un tag.",
+        "checkoutProd": "Primera etapa del pipeline de producción: extrae el código de la rama release/<version>.",
+        "toolsProd": "Instala las herramientas y dependencias que el resto del pipeline de producción necesita para ejecutarse.",
+        "testProd": "Primera subetapa de producción. Dos pasos: UT (pruebas unitarias) y SAST (análisis estático de seguridad de la aplicación).",
+        "sonarProd": "En release/* el gate no se vuelve a ejecutar: el corte ya pasó en develop. Producción espera la confirmación de Jenkins y un tag semver.",
+        "buildProd": "Tercera subetapa. Produce el artefacto de producción.",
+        "deployProd": "Cuarta subetapa. Recrea la instancia en el compartment de producción y asocia la IP reservada. DNS y el load balancer conservan la misma dirección; solo cambia el contenedor.",
+        "production": "Compartment OCI de producción, aislado de staging. El mismo camino de la solicitud — DNS, load balancer, Ingress, OKE, Docker y JVM — con su propio DNS y LB, más CPU/memoria y autoscaling.",
+        "dnsProd": "El dominio canónico apunta al load balancer de producción. Una IP distinta, un compartment distinto; las pruebas nunca resuelven aquí.",
+        "lbProd": "LB dedicado del compartment de producción. HTTPS en 443, SSL en el borde, tráfico interno en la red privada. La IP pública es la dirección reservada que el deploy vuelve a asociar.",
+        "ingressProd": "El mismo trabajo que el Ingress de staging: la ruta de la URL selecciona el microservicio. Clúster aparte, compartment aparte.",
+        "okeProd": "OKE de producción. Levanta pods y los reemplaza, con más CPU y memoria, y escala automáticamente con la demanda.",
+        "dockerProd": "El mismo artefacto. Aísla el proceso Linux y aplica los límites que OKE definió en este compartment.",
+        "jvmProd": "La JVM aplica la regla de negocio y devuelve JSON. El camino de vuelta es Ingress → load balancer → usuario."
+      }
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Una selección de lo que he construido",
+    "empty": "Proyectos destacados próximamente.",
+    "view_repo": "Ver repositorio",
+    "live_site": "Sitio de la correduría",
+    "private": "Código privado",
+    "private_hint": "El repositorio está cerrado. El código pertenece a la correduría.",
+    "how_title": "Cómo funciona el sistema",
+    "sim_label": "Recorrido",
+    "sim": {
+      "title": "Sistema de cotización",
+      "subtitle": "Recorre el flujo. Solo datos de ejemplo.",
+      "aria": "Recorrido de cotización de Caçador Seguros",
+      "step_type": "Tipo",
+      "step_import": "PDF",
+      "step_review": "Revisión",
+      "step_done": "Documento",
+      "select_label": "¿Qué póliza quieres cotizar?",
+      "types": {
+        "auto": "Auto",
+        "home": "Hogar",
+        "business": "Comercial"
+      },
+      "import_title": "Importar PDF de la aseguradora",
+      "import_hint": "Simula la lectura de una cotización real. Ningún archivo sale de tu computadora.",
+      "import_cta": "Importar PDF",
+      "processing": "Procesando PDF…",
+      "log_detect": "Detectando aseguradora…",
+      "log_found": "{insurer} identificada",
+      "log_person": "Extrayendo datos del asegurado…",
+      "log_asset": "Extrayendo bien y coberturas…",
+      "log_done": "Formulario completado",
+      "review_title": "Revisar cotización",
+      "review_hint": "Edita los campos extraídos, elige coberturas y deducible. La prima se recalcula.",
+      "field_insured": "Asegurado",
+      "field_asset": "Bien",
+      "field_coverage": "Cobertura",
+      "field_premium": "Prima",
+      "field_insurer": "Aseguradora",
+      "generate": "Generar cotización",
+      "generating": "Generando documento…",
+      "done_title": "Cotización generada",
+      "done_hint": "Lista para enviar al cliente.",
+      "pdf_kicker": "Cotización",
+      "pdf_slogan": "Protege lo que has construido",
+      "restart": "Ejecutar de nuevo",
+      "file": {
+        "auto": "porto-seguro-quote.pdf",
+        "home": "mapfre-home-quote.pdf",
+        "business": "bradesco-commercial-quote.pdf"
+      },
+      "sample": {
+        "auto": {
+          "insurer": "Porto Seguro",
+          "insured": "Ana Souza",
+          "asset": "Honda Civic EXL 2022 · ABC-1D23",
+          "coverage": "Cobertura completa",
+          "premium": "R$ 2,847.90"
+        },
+        "home": {
+          "insurer": "MAPFRE",
+          "insured": "Carlos Mendes",
+          "asset": "Hogar — Caçador, SC",
+          "coverage": "Incendio + Robo",
+          "premium": "R$ 1,120.00"
+        },
+        "business": {
+          "insurer": "Bradesco",
+          "insured": "Ateliê Serra Ltda",
+          "asset": "Inmueble comercial, 180 m²",
+          "coverage": "Comercial completa",
+          "premium": "R$ 4,350.00"
+        }
+      },
+      "drop_active": "Suelta el PDF para importar",
+      "confidence": "{n}% de confianza",
+      "edited": "Editado",
+      "deductible": "Deducible",
+      "restore": "Restaurar extracción",
+      "required": "Asegurado y bien son obligatorios.",
+      "coverages": {
+        "auto": {
+          "comprehensive": "Todo riesgo",
+          "third_party": "Terceros",
+          "glass": "Incendio + lunas"
+        },
+        "home": {
+          "fire_theft": "Incendio + robo",
+          "full": "Hogar completo",
+          "basic": "Básica"
+        },
+        "business": {
+          "full": "Comercial completa",
+          "fire": "Incendio",
+          "liability": "RC"
+        }
+      },
+      "deductibles": {
+        "low": "0,5%",
+        "mid": "1%",
+        "high": "2%"
+      }
+    },
+    "categories": {
+      "public": "Comercial (público)",
+      "private": "Comercial (privado)"
+    },
+    "blurb": {
+      "public": "Empresas que me permitieron publicar su nombre. El código fuente del sistema permanece cerrado.",
+      "private": "Trabajo para clientes bajo NDA. Sin nombre de empresa, sin repositorio, candado en el código."
+    },
+    "confidential_hint": "Nombre y código omitidos a pedido del cliente.",
+    "actions": {
+      "live": "Ver sitio",
+      "repo": "Ver repositorio"
+    },
+    "items": {
+      "cacador": {
+        "name": "Caçador Seguros",
+        "client": "Corretora de Seguros Caçador",
+        "description": "Sistema interno de cotización para la correduría. Los corredores importan el PDF de cotización de la aseguradora; la app detecta el origen, extrae los campos y emite un documento en el layout propio de Caçador: auto, camión, hogar y comercial.",
+        "how": {
+          "import": {
+            "title": "PDF de la aseguradora",
+            "body": "Sube la cotización original: Porto, Bradesco, MAPFRE, Allianz, Tokio, HDI, Azul o Yelum."
+          },
+          "extract": {
+            "title": "Extracción automática",
+            "body": "Parsers por aseguradora leen el PDF, detectan el origen y completan asegurado, bien, coberturas y deducibles."
+          },
+          "review": {
+            "title": "Revisión",
+            "body": "Todos los campos siguen editables. El corredor ajusta lo que necesita antes de emitir."
+          },
+          "issue": {
+            "title": "Documento de la correduría",
+            "body": "La cotización sale en el layout de Caçador, lista para enviar al cliente."
+          }
+        },
+        "cta": "Sitio de la correduría",
+        "sim_hint": "Importa la cotización, ajusta la extracción y emite el documento."
+      },
+      "events": {
+        "name": "Plataforma orientada a eventos",
+        "client": "Cliente confidencial",
+        "description": "Una SPA en Vue.js que solo habla con un BFF en Spring Boot. El BFF autentica con Keycloak, publica un comando en RabbitMQ y un worker —dueño de su PostgreSQL— lo procesa fuera de la solicitud HTTP. Los secretos viven en Vault, nunca en el código.",
+        "how": {
+          "spa": {
+            "title": "Intención en el cliente",
+            "body": "La PWA guarda el token en Pinia y nunca llama a un worker de forma directa."
+          },
+          "bff": {
+            "title": "El BFF autoriza",
+            "body": "Valida el JWT, aplica RBAC y convierte la intención en un comando de cola."
+          },
+          "queue": {
+            "title": "RabbitMQ",
+            "body": "El mensaje sigue el contrato de ese bounded context, con un correlation-id."
+          },
+          "worker": {
+            "title": "El worker persiste",
+            "body": "Consume la cola, escribe en su propio PostgreSQL y responde por el mismo camino."
+          }
+        },
+        "sim": {
+          "title": "Pipeline de comandos",
+          "aria": "Recorrido de un comando en la plataforma orientada a eventos",
+          "select_label": "¿Qué comando disparas?",
+          "steps": {
+            "select": "Intención",
+            "run": "Pipeline",
+            "review": "Respuesta",
+            "done": "OK"
+          },
+          "choices": {
+            "create": "Crear pedido",
+            "query": "Consulta",
+            "retry": "Reprocesar"
+          },
+          "review_title": "Respuesta del BFF",
+          "review_hint": "En el sistema real esto vuelve como JSON, con correlation-id en el header.",
+          "confirm": "Aceptar respuesta",
+          "done_title": "Comando aceptado",
+          "done_hint": "El worker ya tomó el mensaje.",
+          "field_labels": {
+            "trace": "Trazado",
+            "queue": "Cola",
+            "status": "Estado",
+            "latency": "Latencia"
+          },
+          "logs": {
+            "create": [
+              "El gateway recibió POST /orders",
+              "El BFF validó el JWT con Keycloak",
+              "Comando publicado en orders.created",
+              "El worker persistió el pedido"
+            ],
+            "query": [
+              "GET /orders/1842 en el gateway",
+              "El BFF autorizó la lectura",
+              "RPC en orders.query",
+              "El worker devolvió el snapshot"
+            ],
+            "retry": [
+              "POST /orders/1842/retry",
+              "El BFF rechazó un duplicado y reemitió",
+              "Mensaje en orders.retry",
+              "El worker reprodujo el outbox"
+            ]
+          },
+          "sample": {
+            "create": {
+              "trace": "trc-9f2a",
+              "queue": "orders.created",
+              "status": "accepted",
+              "latency": "42 ms"
+            },
+            "query": {
+              "trace": "trc-1c88",
+              "queue": "orders.query",
+              "status": "found",
+              "latency": "19 ms"
+            },
+            "retry": {
+              "trace": "trc-77b0",
+              "queue": "orders.retry",
+              "status": "requeued",
+              "latency": "31 ms"
+            }
+          },
+          "hops": {
+            "spa": "SPA",
+            "gateway": "Gateway",
+            "bff": "BFF",
+            "queue": "RabbitMQ",
+            "worker": "Worker"
+          },
+          "hop_status": {
+            "idle": "en espera",
+            "active": "en curso",
+            "ok": "ok",
+            "fail": "timeout"
+          },
+          "inject_fail": "Simular timeout del worker",
+          "fail_title": "El worker no respondió",
+          "fail_hint": "El mensaje fue a la DLQ. Reencólarlo para seguir.",
+          "retry": "Reencolar mensaje",
+          "copy_trace": "Copiar correlation-id",
+          "copied": "Copiado"
+        },
+        "sim_hint": "Dispara un comando y mira SPA → gateway → BFF → RabbitMQ → worker. Inyecta un timeout si quieres.",
+        "bff": {
+          "hint": "Dispara como el BFF Spring Boot: JWT, RBAC, rpcCall en RabbitMQ y el envelope de respuesta.",
+          "title": "BFF · resource server",
+          "incoming": "HTTP de entrada",
+          "dispatch": "Enviar al BFF",
+          "worker_label": "Worker / RPC",
+          "jwt": {
+            "valid": "Token válido",
+            "expired": "Token caducado"
+          },
+          "roles": {
+            "write": "orders.write",
+            "read": "orders.read",
+            "none": "sin rol"
+          },
+          "worker": {
+            "ok": "Reply OK",
+            "timeout": "Timeout RPC"
+          },
+          "steps": {
+            "request": "HTTP",
+            "auth": "Auth",
+            "rpc": "RPC",
+            "envelope": "Envelope"
+          },
+          "stages": {
+            "http": "HttpServletRequest",
+            "jwt": "JwtDecoder / JWK",
+            "rbac": "MethodSecurity",
+            "rpc": "RabbitTemplate rpcCall",
+            "reply": "ResponseEntity"
+          },
+          "stage_status": {
+            "idle": "idle",
+            "active": "en curso",
+            "ok": "ok",
+            "fail": "fallo"
+          },
+          "logs": {
+            "http": "Recibido {route}",
+            "jwt_valid": "JwtDecoder: firma + exp OK (JWK Keycloak)",
+            "jwt_expired": "JwtDecoder: exp en el pasado → 401",
+            "rbac_write": "hasAuthority('orders.write')",
+            "rbac_read": "hasAuthority('orders.read')",
+            "rbac_none": "AccessDeniedException",
+            "rpc": "RabbitTemplate.convertSendAndReceive({queue})",
+            "reply_accepted": "202 Accepted · correlation-id en el header",
+            "reply_timeout": "504 · mensaje en la DLQ"
+          }
+        }
+      },
+      "support": {
+        "name": "Consola de soporte",
+        "client": "Cliente confidencial",
+        "description": "Herramienta interna para el equipo de soporte: clasificar la solicitud, buscar una solución rápida y abrir un protocolo rastreable. Construida para acortar el camino del chat al equipo dueño del incidente.",
+        "how": {
+          "intake": {
+            "title": "Entra la solicitud",
+            "body": "Chat o teléfono. El analista registra el caso sin perder contexto."
+          },
+          "classify": {
+            "title": "Clasificación",
+            "body": "Prioridad y cola salen de reglas simples: acceso, facturación, caída."
+          },
+          "solve": {
+            "title": "Resolver o escalar",
+            "body": "La base interna sugiere un paso; si falla, se transfiere por escrito."
+          },
+          "protocol": {
+            "title": "Protocolo",
+            "body": "Todo queda atado a un número rastreable para que el historial no desaparezca."
+          }
+        },
+        "sim": {
+          "title": "Cola de soporte",
+          "aria": "Recorrido de la consola interna de soporte",
+          "select_label": "¿Qué ticket acaba de llegar?",
+          "steps": {
+            "select": "Ticket",
+            "run": "Triage",
+            "review": "Traspaso",
+            "done": "Protocolo"
+          },
+          "choices": {
+            "access": "Acceso",
+            "billing": "Facturación",
+            "outage": "Caída"
+          },
+          "review_title": "Listo para abrir un protocolo",
+          "review_hint": "En el sistema real el analista aún puede editar la nota antes de guardar.",
+          "confirm": "Abrir protocolo",
+          "done_title": "Protocolo abierto",
+          "done_hint": "El equipo dueño ya tiene el ticket.",
+          "field_labels": {
+            "ticket": "Ticket",
+            "priority": "Prioridad",
+            "owner": "Cola",
+            "protocol": "Protocolo"
+          },
+          "logs": {
+            "access": [
+              "Reporte: el usuario no puede abrir un módulo",
+              "Clasificado como acceso",
+              "Artículo sugerido: restablecer permisos",
+              "Cola: identity"
+            ],
+            "billing": [
+              "Reporte: factura duplicada",
+              "Clasificado como facturación",
+              "Sugerencia: revisar el período en el ERP",
+              "Cola: finance"
+            ],
+            "outage": [
+              "Reporte: pantalla en blanco después del login",
+              "Clasificado como caída",
+              "Sugerencia: revisar el estado del gateway",
+              "Cola: platform"
+            ]
+          },
+          "sample": {
+            "access": {
+              "ticket": "#4821",
+              "priority": "Media",
+              "owner": "Identity",
+              "protocol": "PRT-10492"
+            },
+            "billing": {
+              "ticket": "#4822",
+              "priority": "Baja",
+              "owner": "Finance",
+              "protocol": "PRT-10493"
+            },
+            "outage": {
+              "ticket": "#4823",
+              "priority": "Alta",
+              "owner": "Platform",
+              "protocol": "PRT-10494"
+            }
+          },
+          "stories": {
+            "access": "El usuario no abre el módulo financiero tras el último deploy. La sesión parece válida.",
+            "billing": "El cliente recibió dos facturas del mismo período. Quiere anular el duplicado.",
+            "outage": "Pantalla en blanco tras el login en varios puestos. Salud del gateway desconocida."
+          },
+          "priority_label": "Prioridad",
+          "queue_label": "Cola",
+          "continue": "Continuar a la nota",
+          "back": "Volver al triaje",
+          "note_label": "Nota de handoff",
+          "note_placeholder": "Qué se intentó y qué debe saber el equipo dueño…",
+          "priorities": {
+            "low": "Baja",
+            "medium": "Media",
+            "high": "Alta"
+          },
+          "queues": {
+            "identity": "Identidad",
+            "finance": "Finanzas",
+            "platform": "Plataforma"
+          }
+        }
+      },
+      "pwa": {
+        "name": "PWA de operaciones",
+        "client": "Cliente confidencial",
+        "description": "Una progressive web app en Vue para operaciones de mostrador. Funciona sin conexión, encola acciones en el dispositivo y sincroniza cuando vuelve la red, sin perder una venta ni un movimiento de stock.",
+        "how": {
+          "install": {
+            "title": "Se instala en el dispositivo",
+            "body": "Se abre como una app. El service worker conserva el shell y los datos recientes."
+          },
+          "offline": {
+            "title": "Funciona sin conexión",
+            "body": "Ventas, movimientos de stock y cierre van a una cola local."
+          },
+          "queue": {
+            "title": "Cola en el dispositivo",
+            "body": "IndexedDB guarda la intención hasta que la red esté estable."
+          },
+          "sync": {
+            "title": "Sincroniza",
+            "body": "Cuando vuelve la conectividad, reproduce en orden contra el BFF."
+          }
+        },
+        "sim": {
+          "title": "Modo sin conexión",
+          "aria": "Recorrido de la PWA de operaciones sin conexión y sincronización",
+          "select_label": "¿Qué ocurre en el mostrador?",
+          "steps": {
+            "select": "Acción",
+            "run": "Local",
+            "review": "Cola",
+            "done": "Sincronización"
+          },
+          "choices": {
+            "sale": "Venta",
+            "stock": "Stock",
+            "close": "Cierre"
+          },
+          "review_title": "Cola local",
+          "review_hint": "Sin red. Todavía no se ha enviado nada.",
+          "confirm": "Volver en línea",
+          "done_title": "Sincronizado",
+          "done_hint": "{n} intención(es) confirmadas por el BFF.",
+          "field_labels": {
+            "device": "Dispositivo",
+            "mode": "Modo",
+            "pending": "Pendiente",
+            "synced": "Sincronización"
+          },
+          "logs": {
+            "sale": [
+              "Service worker: shell en caché",
+              "Venta escrita en IndexedDB",
+              "Cola local: 1 intención",
+              "Sin conexión — en espera"
+            ],
+            "stock": [
+              "Movimiento de stock local",
+              "Conflicto evitado con una versión de documento",
+              "Cola local: 2 intenciones",
+              "Sin conexión — en espera"
+            ],
+            "close": [
+              "Cierre iniciado",
+              "Totales verificados en el dispositivo",
+              "Cola local: 3 intenciones",
+              "Sin conexión — en espera"
+            ]
+          },
+          "sample": {
+            "sale": {
+              "device": "Tablet-04",
+              "mode": "Offline",
+              "pending": "1 venta",
+              "synced": "Pendiente"
+            },
+            "stock": {
+              "device": "Tablet-04",
+              "mode": "Offline",
+              "pending": "2 movimientos",
+              "synced": "Pendiente"
+            },
+            "close": {
+              "device": "Tablet-04",
+              "mode": "Offline",
+              "pending": "3 ítems",
+              "synced": "Pendiente"
+            }
+          },
+          "online": "Online",
+          "offline": "Offline",
+          "device": "Dispositivo",
+          "pending_count": "pendientes",
+          "queue_title": "Cola en el dispositivo",
+          "queue_empty": "Aún no hay intenciones. Registra venta, stock o cierre.",
+          "item_status": {
+            "queued": "En cola",
+            "syncing": "Sincronizando",
+            "synced": "Sincronizado",
+            "conflict": "Conflicto"
+          },
+          "resolve": "Mantener versión local",
+          "sync": "Sincronizar con el BFF",
+          "offline_hint": "Vuelve online para reenviar la cola al BFF."
+        },
+        "sim_hint": "Opera offline, apila varias intenciones y vuelve online para sincronizar con el BFF.",
+        "bff": {
+          "hint": "El BFF recibe la cola offline: JWT, idempotencia, aplica en orden, 409 si hay conflicto de versión.",
+          "title": "BFF · replay",
+          "batch": "Lote de replay",
+          "dispatch": "POST replay",
+          "jwt": {
+            "valid": "Token válido",
+            "expired": "Token caducado"
+          },
+          "steps": {
+            "request": "HTTP",
+            "auth": "Auth",
+            "apply": "Apply",
+            "envelope": "Envelope"
+          },
+          "logs": {
+            "receive": "Recibidos {n} intent(s) en /v1/ops/replay",
+            "jwt_valid": "JwtDecoder: token OK",
+            "jwt_expired": "JwtDecoder: caducado → 401",
+            "apply_sale": "Aplicando SALE · idempotency-key ok",
+            "apply_stock": "Aplicando STOCK · chequeo de versión",
+            "apply_close": "Aplicando CLOSE · versión esperada",
+            "result_ok": "{intent}: persistido",
+            "result_conflict": "{intent}: 409 conflicto de versión"
+          },
+          "item_status": {
+            "idle": "en cola",
+            "active": "aplicando",
+            "ok": "ok",
+            "conflict": "conflicto",
+            "rejected": "rechazado"
+          },
+          "status": {
+            "200": "Replay aceptado",
+            "401": "No autorizado",
+            "409": "Conflicto en el cierre"
+          }
+        }
+      }
+    },
+    "views": {
+      "front": "Front",
+      "bff": "BFF"
+    }
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "De la universidad al trabajo full-stack: soporte, producto y el stack que uso hoy.",
+    "now": "Actualidad",
+    "location": "Curitiba, Paraná, Brasil",
+    "month_year": "{month} {year}",
+    "range": "{start} – {end}",
+    "range_present": "{start} – actualidad",
+    "n_years": "{n} año | {n} años",
+    "n_months": "{n} mes | {n} meses",
+    "months": [
+      "ene",
+      "feb",
+      "mar",
+      "abr",
+      "may",
+      "jun",
+      "jul",
+      "ago",
+      "sep",
+      "oct",
+      "nov",
+      "dic"
+    ],
+    "types": {
+      "contract": "Contrato",
+      "fulltime": "Tiempo completo",
+      "internship": "Prácticas",
+      "education": "Formación"
+    },
+    "modes": {
+      "hybrid": "Híbrido",
+      "remote": "Remoto"
+    },
+    "companies": {
+      "saastec": "SaaSTec Labs",
+      "korp": "Korp ERP | by Viasoft",
+      "education": "Estudios de grado"
+    },
+    "roles": {
+      "fullstack": {
+        "title": "Desarrollador full-stack",
+        "summary": "Desarrollador full-stack enfocado en Vue.js (PWAs) y Spring Boot en una arquitectura de microservicios orientada a eventos con RabbitMQ. Experiencia con un BFF, autenticación con Keycloak, gestión de secretos con Vault y persistencia en PostgreSQL (DBeaver). Monitoreo y observabilidad con Prometheus y Grafana. Control de versiones con Git y pipelines CI/CD en Jenkins."
+      },
+      "korpSenior": {
+        "title": "Analista de soporte sénior",
+        "summary": "Trabajé como analista de soporte atendiendo clientes por chat y teléfono: identificar la solicitud con rapidez, buscar una solución inmediata y clasificar la prioridad. Escalaba incidentes al equipo correcto con traspaso escrito y trazabilidad por ticket."
+      },
+      "saastecSenior": {
+        "title": "Analista de soporte sénior",
+        "summary": "Tras ser contratado a tiempo completo, seguí atendiendo clientes por chat y teléfono, detectando solicitudes con rapidez y documentando el traspaso de incidentes. En paralelo, empecé a contribuir a tiempo parcial en las aplicaciones de la empresa, fuera de la cola de soporte."
+      },
+      "saastecJunior": {
+        "title": "Analista de soporte júnior",
+        "summary": "Prácticas que combinaban soporte al cliente y desarrollo. En soporte, atendía por chat y teléfono, identificaba solicitudes con rapidez y documentaba el traspaso de incidentes. Como desarrollador, construí herramientas internas para agilizar el flujo de soporte."
+      },
+      "degree": {
+        "title": "Universidad",
+        "summary": "Comencé el grado en abril de 2021 y lo terminé en junio de 2023, en paralelo a las prácticas en SaaSTec Labs."
+      }
+    },
+    "skill": {
+      "vue": "Vue.js",
+      "spring": "Spring Boot",
+      "rabbitmq": "RabbitMQ",
+      "keycloak": "Keycloak",
+      "vault": "Vault",
+      "postgres": "PostgreSQL",
+      "prometheus": "Prometheus",
+      "grafana": "Grafana",
+      "git": "Git",
+      "jenkins": "Jenkins",
+      "data": "Análisis de datos",
+      "systems": "Análisis de sistemas",
+      "customer": "Soporte al cliente",
+      "incidents": "Gestión de incidentes",
+      "chat": "Chat",
+      "phone": "Teléfono",
+      "dev": "Desarrollo",
+      "internal": "Herramientas internas"
+    }
+  },
+  "contact": {
+    "title": "Hablemos",
+    "subtitle": "Abierto a roles full-stack, conversaciones de arquitectura y colaboraciones. El correo es el canal preferido para oportunidades profesionales.",
+    "availability": "Disponible para nuevas oportunidades",
+    "location": "Curitiba, Paraná, Brasil",
+    "response": "Respuesta habitual en 48 horas",
+    "cta_email": "Escribir un correo",
+    "copy": "Copiar correo",
+    "copied": "Correo copiado",
+    "preferred": "Preferido",
+    "email": "Correo",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email_hint": "Canal preferido para oportunidades, propuestas y conversaciones profesionales.",
+    "linkedin_hint": "Perfil profesional, experiencia y recomendaciones.",
+    "github_hint": "Repositorios, casos de estudio y código público.",
+    "open_linkedin": "Ver perfil de LinkedIn",
+    "open_github": "Ver repositorios de GitHub",
+    "mail_subject": "Oportunidad — Mateus Matyak"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "built_with": "Hecho con Vue 3, TypeScript y Vite"
+  },
+  "actions": {
+    "toggle_theme": "Cambiar tema",
+    "change_language": "Cambiar idioma"
+  }
+}

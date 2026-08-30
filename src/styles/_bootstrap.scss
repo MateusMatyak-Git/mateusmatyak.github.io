@@ -1,0 +1,23 @@
+// Grid and responsive utilities only — no reboot, type, forms, or buttons.
+@import 'bootstrap/scss/functions';
+
+$primary: #4f46e5;
+$border-radius: 12px;
+$grid-gutter-width: 1.5rem;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1120px,
+  xxl: 1120px,
+);
+
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/utilities/api';
