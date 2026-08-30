@@ -2,7 +2,7 @@
 
 Portfólio pessoal de **Mateus Matyak**, desenvolvedor full-stack em Curitiba, Paraná. O site apresenta a forma como eu projeto e construo sistemas distribuídos: frontend em Vue.js, BFF em Spring Boot, identidade com Keycloak, mensageria com RabbitMQ e secrets com Vault.
 
-**Site:** [mateusmatyak-git.github.io](https://mateusmatyak-git.github.io/)
+**Site:** [mateusmatyak-git.github.io/mateusmatyak.github.io](https://mateusmatyak-git.github.io/mateusmatyak.github.io/)
 
 **GitHub:** [github.com/MateusMatyak-Git](https://github.com/MateusMatyak-Git)
 
@@ -59,7 +59,13 @@ Outros scripts:
 
 ## Publicação
 
-O site vai ao ar no GitHub Pages da conta `MateusMatyak-Git`. Para um user site, o repositório precisa se chamar **`MateusMatyak-Git.github.io`**.
+O site vai ao ar no GitHub Pages da conta `MateusMatyak-Git`. Com o repositório nomeado `mateusmatyak.github.io`, o Pages publica um **project site** em:
+
+**https://mateusmatyak-git.github.io/mateusmatyak.github.io/**
+
+No CI, o `base` do Vite sai de `GITHUB_REPOSITORY`, para JS/CSS saírem em `/mateusmatyak.github.io/assets/…`. Com `base: '/'`, o HTML pedia `/assets/…` na raiz do domínio; o GitHub devolvia o 404 em HTML e o navegador bloqueava o módulo (`disallowed MIME type “text/html”`).
+
+Para servir em `https://mateusmatyak-git.github.io/`, renomeie o repositório para **`MateusMatyak-Git.github.io`**. O `base` volta a `/` sozinho.
 
 Push em `main` dispara o workflow em `.github/workflows/deploy.yml`: `npm ci`, `npm run build` e deploy do `dist`. Em **Settings → Pages**, a origem deve ser **GitHub Actions**.
 

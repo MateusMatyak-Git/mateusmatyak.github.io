@@ -2,7 +2,7 @@
   "name": "mateusmatyak.github.io",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://mateusmatyak-git.github.io/",
+  "homepage": "https://mateusmatyak-git.github.io/mateusmatyak.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
