@@ -5,6 +5,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const SITE_ORIGIN = 'https://mateusmatyak-git.github.io'
+const projectRoot = fileURLToPath(new URL('.', import.meta.url))
+const distDir = path.join(projectRoot, 'dist')
 
 function pagesBase(): string {
   const repo = process.env.GITHUB_REPOSITORY
@@ -27,7 +29,7 @@ function githubPagesPlugin(basePath: string): Plugin {
       return html.replaceAll(`${SITE_ORIGIN}/`, `${SITE_ORIGIN}${basePath}`)
     },
     closeBundle() {
-      const file = path.resolve('dist/404.html')
+      const file = path.join(distDir, '404.html')
       if (!fs.existsSync(file)) return
       const html = fs.readFileSync(file, 'utf8')
       fs.writeFileSync(
@@ -39,11 +41,18 @@ function githubPagesPlugin(basePath: string): Plugin {
 }
 
 export default defineConfig({
+  root: path.join(projectRoot, 'src'),
+  publicDir: path.join(projectRoot, 'public'),
+  envDir: projectRoot,
   base,
   plugins: [vue(), githubPagesPlugin(base)],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+  },
+  build: {
+    outDir: distDir,
+    emptyOutDir: true,
   },
 })

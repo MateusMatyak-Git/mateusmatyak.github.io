@@ -67,9 +67,7 @@ No CI, o `base` do Vite sai de `GITHUB_REPOSITORY`, para JS/CSS saírem em `/mat
 
 Para servir em `https://mateusmatyak-git.github.io/`, renomeie o repositório para **`MateusMatyak-Git.github.io`**. O `base` volta a `/` sozinho.
 
-Push em `main` dispara o workflow em `.github/workflows/deploy.yml`: `npm ci`, `npm run build` e deploy do `dist`.
-
-Em **Settings → Pages → Build and deployment → Source**, use **GitHub Actions**. Se estiver em **Deploy from a branch**, o Pages publica o `index.html` do Vite (com `/src/main.ts`) em vez do `dist`, e o navegador bloqueia o módulo.
+Push em `main` dispara o workflow em `.github/workflows/deploy.yml`: `npm ci`, `npm run build` e cópia do `dist` para a raiz do branch (o que o Pages “Deploy from a branch” realmente publica). O HTML de desenvolvimento fica em `src/index.html`.
 
 O `public/404.html` redireciona rotas profundas de volta para a SPA, o que o Pages sozinho não faz.
 
