@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0a0f1c" />
+  <g fill="none" stroke-width="7.2" stroke-linejoin="miter" stroke-miterlimit="2.2" stroke-linecap="butt" transform="translate(4.6 6) scale(0.36)">
+    <path d="M11 51V7L33 48" stroke="#e6ebf3" />
+    <path d="M31 48L53 7V51" stroke="#818cf8" />
+  </g>
+</svg>
